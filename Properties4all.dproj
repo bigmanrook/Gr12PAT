@@ -106,6 +106,13 @@
             <Form>frmMainMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Database_dm.pas">
+            <Form>DataModule1</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Property_cls.pas"/>
+        <DCCReference Include="User_cls.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

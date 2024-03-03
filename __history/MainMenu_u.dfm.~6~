@@ -1,7 +1,6 @@
 object frmMainMenu: TfrmMainMenu
   Left = 0
   Top = 0
-  Align = alClient
   Caption = 'Main Menu'
   ClientHeight = 442
   ClientWidth = 628
@@ -11,7 +10,6 @@ object frmMainMenu: TfrmMainMenu
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesigned
   OnCreate = FormCreate
   TextHeight = 15
   object imgProfile: TImage
