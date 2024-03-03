@@ -1,0 +1,35 @@
+unit MainMenu_u;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmMainMenu = class(TForm)
+    btnHelp: TButton;
+    btnReturn: TButton;
+    imgProfile: TImage;
+    lblUsername: TLabel;
+    lblAccount: TLabel;
+    lblUser: TLabel;
+    btnViewProperties: TButton;
+    btnAddProperty: TSpeedButton;
+    btnEditProperties: TButton;
+    imglsProperties: TImageList;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmMainMenu: TfrmMainMenu;
+
+implementation
+
+{$R *.dfm}
+
+end.
