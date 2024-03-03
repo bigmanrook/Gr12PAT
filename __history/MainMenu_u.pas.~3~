@@ -19,6 +19,7 @@ type
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
     imglsProperties: TImageList;
+    procedure OnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,5 +32,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmMainMenu.OnClick(Sender: TObject);
+begin
+//Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
+end;
 
 end.

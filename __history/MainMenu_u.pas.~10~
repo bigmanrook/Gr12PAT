@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u;
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TfrmMainMenu = class(TForm)
@@ -76,20 +76,8 @@ ShowMessage('File Assigned');
      arrBathrooms[I].Picture.LoadFromFile(sBedroom);
    end;
 
-   sKitchen := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
-   if FileExists(sKitchen) then
-   begin
-     arrBathrooms[I].Picture.LoadFromFile(sKitchen);
-   end;
-
-   sFrontal := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
-   if FileExists(sFrontal) then
-   begin
-     arrBathrooms[I].Picture.LoadFromFile(sFrontal);
-   end;
 
 
-  ShowMessage('Arrays populated');
 
 
   end;

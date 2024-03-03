@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u;
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TfrmMainMenu = class(TForm)
@@ -89,7 +89,7 @@ ShowMessage('File Assigned');
    end;
 
 
-  ShowMessage('Arrays populated');
+
 
 
   end;
