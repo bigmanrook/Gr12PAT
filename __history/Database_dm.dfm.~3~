@@ -3,7 +3,7 @@ object DataModule1: TDataModule1
   Height = 480
   Width = 640
   object ADOConnection1: TADOConnection
-    Left = 328
-    Top = 216
+    Left = 280
+    Top = 264
   end
 end
