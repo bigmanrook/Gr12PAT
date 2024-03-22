@@ -12,7 +12,6 @@ object frmMainMenu: TfrmMainMenu
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesigned
-  OnCreate = FormCreate
   TextHeight = 15
   object imgProfile: TImage
     Left = 8
@@ -79,6 +78,15 @@ object frmMainMenu: TfrmMainMenu
     Height = 25
     Caption = 'Edit Properties'
     TabOrder = 3
+  end
+  object btnProperties: TButton
+    Left = 288
+    Top = 25
+    Width = 153
+    Height = 25
+    Caption = 'View available properties'
+    TabOrder = 4
+    OnClick = btnPropertiesClick
   end
   object imglsProperties: TImageList
     Left = 184

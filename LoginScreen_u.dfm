@@ -60,7 +60,7 @@ object frmLoginScreen: TfrmLoginScreen
     OnClick = btnSignupClick
   end
   object btnResetPassword: TButton
-    Left = 273
+    Left = 265
     Top = 344
     Width = 103
     Height = 25

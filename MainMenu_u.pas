@@ -19,7 +19,8 @@ type
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
     imglsProperties: TImageList;
-    procedure FormCreate(Sender: TObject);
+    btnProperties: TButton;
+    procedure btnPropertiesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +41,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmMainMenu.FormCreate(Sender: TObject);
+procedure TfrmMainMenu.btnPropertiesClick(Sender: TObject);
 
 var
   I, iCount: Integer;
@@ -50,7 +51,7 @@ begin
 //Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
 //Loop through textfile
 iCount := 0;
-AssignFile(tFile, 'Win32\Debug\Houses-dataset\Houses Dataset INFO\HousesInfo.txt');
+AssignFile(tFile, 'Debug/Houses Dataset INFO/HousesInfo.txt');
 Reset(tFile);
 ShowMessage('File Assigned');
 
@@ -64,25 +65,25 @@ ShowMessage('File Assigned');
  for I := 1 to iCount do
   begin
 
-   sBathroom := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bathroom.jpg';
+   sBathroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bathroom.jpg';
    if FileExists(sBathroom) then
    begin
      arrBathrooms[I].Picture.LoadFromFile(sBathroom);
    end;
 
-   sBedroom := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
+   sBedroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
    if FileExists(sBedroom) then
    begin
      arrBathrooms[I].Picture.LoadFromFile(sBedroom);
    end;
 
-   sKitchen := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
+   sKitchen := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
    if FileExists(sKitchen) then
    begin
      arrBathrooms[I].Picture.LoadFromFile(sKitchen);
    end;
 
-   sFrontal := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
+   sFrontal := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
    if FileExists(sFrontal) then
    begin
      arrBathrooms[I].Picture.LoadFromFile(sFrontal);
@@ -92,9 +93,7 @@ ShowMessage('File Assigned');
   ShowMessage('Arrays populated');
 
 
-  end;
-
-
+end;
 end;
 
 end.
