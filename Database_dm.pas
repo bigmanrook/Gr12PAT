@@ -7,7 +7,6 @@ uses
 
 type
   TDataModule1 = class(TDataModule)
-    ADOConnection1: TADOConnection;
   procedure DataModuleSetup(Sender: TObject);
   private
     { Private declarations }
@@ -15,8 +14,10 @@ type
     { Public declarations }
 
     ConP4A : TADOConnection;
-    TblP4A : TADOTable;
-    dscP4A : TDataSource;
+    TblAcc : TADOTable;
+    TblProperties : TADOTable;
+    dscAcc : TDataSource;
+    dscProperties : TDataSource;
 
 
   end;
@@ -37,11 +38,25 @@ procedure TDataModule1.DataModuleSetup(Sender: TObject);
 begin
 
  conP4A := TADOConnection.Create( DataModule1 );
- tblP4A := TADOTable.Create( DataModule1 );
- dscP4A := TDataSource.Create( DataModule1 );
+ tblAcc := TADOTable.Create( DataModule1 );
+ dscAcc := TDataSource.Create( DataModule1 );
+ tblProperties := TADOTable.Create( DataModule1 );
+ dscProperties := TDataSource.Create( DataModule1 );
 
- ConP4A.ConnectionString := '';
-  //Connect Database
+ ConP4A.ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Properties4All.mdb;Persist Security Info=False';
+ ConP4A.LoginPrompt := False;
+ ConP4A.Open;
+
+ tblAcc.Connection := conP4A;
+ tblAcc.TableName := 'Account';
+ dscAcc.DataSet := tblAcc;
+ tblProperties.Connection := conP4A;
+ tblProperties.TableName := 'Properties';
+ dscProperties.DataSet := tblAcc;
+
+ tblAcc.Open;
+ tblProperties.Open;
+
 end;
 
 end.

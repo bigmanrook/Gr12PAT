@@ -99,7 +99,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="LoginScreen_u.pas">
-            <Form>fLoginScreen</Form>
+            <Form>frmLoginScreen</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="MainMenu_u.pas">
