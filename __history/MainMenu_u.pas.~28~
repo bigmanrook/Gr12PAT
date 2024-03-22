@@ -32,7 +32,7 @@ var
   arrBathrooms : array of TImage;
   arrBedrooms : array of TImage;
   arrKitchens : array of TImage;
-  arrFrontal : array of TImage;
+  arrFrontals : array of TImage;
   arrFolder : array of String;
   sBathroom, sBedroom, sFrontal, sKitchen : String;
   tFile : TextFile;
@@ -51,7 +51,7 @@ begin
 //Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
 //Loop through textfile
 iCount := 0;
-AssignFile(tFile, 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses Dataset INFO\HousesInfo.txt');
+AssignFile(tFile, 'Houses Dataset INFO/HousesInfo.txt');
 Reset(tFile);
 ShowMessage('File Assigned');
 
@@ -59,9 +59,14 @@ ShowMessage('File Assigned');
   while NOT EOF(tFile) do
     begin
       inc(iCount);
+      //ShowMessage(inttostr(iCount))
     end;
-
-
+  ShowMessage('iCount established');
+  setLength(arrBathrooms, iCount);
+  setLength(arrBedrooms, iCount);
+  setLength(arrKitchens, iCount);
+  setLength(arrFrontals, iCount);
+ShowMessage('Array lengths set');
  for I := 1 to iCount do
   begin
 
@@ -70,25 +75,26 @@ ShowMessage('File Assigned');
    begin
      arrBathrooms[I].Picture.LoadFromFile(sBathroom);
    end;
+   ShowMessage('Array lengths set');
 
    sBedroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
    if FileExists(sBedroom) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sBedroom);
+     arrBedrooms[I].Picture.LoadFromFile(sBedroom);
    end;
-
+   ShowMessage('Array lengths set');
    sKitchen := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
    if FileExists(sKitchen) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sKitchen);
+     arrKitchens[I].Picture.LoadFromFile(sKitchen);
    end;
-
+   ShowMessage('Array lengths set');
    sFrontal := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
    if FileExists(sFrontal) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sFrontal);
+     arrFrontals[I].Picture.LoadFromFile(sFrontal);
    end;
-
+   ShowMessage('Array lengths set');
 
   ShowMessage('Arrays populated');
 

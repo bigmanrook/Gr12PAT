@@ -19,7 +19,8 @@ type
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
     imglsProperties: TImageList;
-    procedure FormCreate(Sender: TObject);
+    btnProperties: TButton;
+    procedure btnPropertiesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +32,7 @@ var
   arrBathrooms : array of TImage;
   arrBedrooms : array of TImage;
   arrKitchens : array of TImage;
-  arrFrontal : array of TImage;
+  arrFrontals : array of TImage;
   arrFolder : array of String;
   sBathroom, sBedroom, sFrontal, sKitchen : String;
   tFile : TextFile;
@@ -40,7 +41,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmMainMenu.FormCreate(Sender: TObject);
+procedure TfrmMainMenu.btnPropertiesClick(Sender: TObject);
 
 var
   I, iCount: Integer;
@@ -50,7 +51,7 @@ begin
 //Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
 //Loop through textfile
 iCount := 0;
-AssignFile(tFile, 'Win32\Debug\Houses-dataset\Houses Dataset INFO\HousesInfo.txt');
+AssignFile(tFile, 'Houses Dataset INFO/HousesInfo.txt');
 Reset(tFile);
 ShowMessage('File Assigned');
 
@@ -60,41 +61,43 @@ ShowMessage('File Assigned');
       inc(iCount);
     end;
 
+  setLength(arrBathrooms, iCount);
+  setLength(arrBedrooms, iCount);
+  setLength(arrKitchens, iCount);
+  setLength(arrFrontals, iCount);
 
  for I := 1 to iCount do
   begin
 
-   sBathroom := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bathroom.jpg';
+   sBathroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bathroom.jpg';
    if FileExists(sBathroom) then
    begin
      arrBathrooms[I].Picture.LoadFromFile(sBathroom);
    end;
 
-   sBedroom := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
+   sBedroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
    if FileExists(sBedroom) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sBedroom);
+     arrBedrooms[I].Picture.LoadFromFile(sBedroom);
    end;
 
-   sKitchen := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
+   sKitchen := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
    if FileExists(sKitchen) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sKitchen);
+     arrKitchens[I].Picture.LoadFromFile(sKitchen);
    end;
 
-   sFrontal := 'C:\Users\Jude\Desktop\Gr12PAT\Win32\Debug\Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
+   sFrontal := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
    if FileExists(sFrontal) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sFrontal);
+     arrFrontals[I].Picture.LoadFromFile(sFrontal);
    end;
 
 
   ShowMessage('Arrays populated');
 
 
-  end;
-
-
+end;
 end;
 
 end.
