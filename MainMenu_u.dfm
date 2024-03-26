@@ -1,10 +1,10 @@
 object frmMainMenu: TfrmMainMenu
-  Left = 0
-  Top = 0
+  Left = 654
+  Top = 270
   Align = alClient
   Caption = 'Main Menu'
   ClientHeight = 442
-  ClientWidth = 628
+  ClientWidth = 631
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -47,6 +47,38 @@ object frmMainMenu: TfrmMainMenu
     Height = 22
     Caption = 'Add Property'
   end
+  object imgFrontal: TImage
+    Left = 168
+    Top = 72
+    Width = 193
+    Height = 145
+    Proportional = True
+    Stretch = True
+  end
+  object imgKitchen: TImage
+    Left = 400
+    Top = 72
+    Width = 185
+    Height = 145
+    Proportional = True
+    Stretch = True
+  end
+  object imgBedroom: TImage
+    Left = 400
+    Top = 239
+    Width = 185
+    Height = 145
+    Proportional = True
+    Stretch = True
+  end
+  object imgBathroom: TImage
+    Left = 168
+    Top = 239
+    Width = 193
+    Height = 145
+    Proportional = True
+    Stretch = True
+  end
   object btnHelp: TButton
     Left = 568
     Top = 392
@@ -80,16 +112,12 @@ object frmMainMenu: TfrmMainMenu
     TabOrder = 3
   end
   object btnProperties: TButton
-    Left = 288
+    Left = 304
     Top = 25
     Width = 153
     Height = 25
     Caption = 'View available properties'
     TabOrder = 4
     OnClick = btnPropertiesClick
-  end
-  object imglsProperties: TImageList
-    Left = 184
-    Top = 144
   end
 end

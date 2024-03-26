@@ -21,11 +21,13 @@ type
     { Private declarations }
   public
     { Public declarations }
+
+    sPassword, sUserAcc : String;
   end;
 
 var
   frmLoginScreen: TfrmLoginScreen;
-  sPassword, sUserAcc : String;
+
 
 implementation
 

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u;
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u, system.Math, jpeg;
 
 type
   TfrmMainMenu = class(TForm)
@@ -18,8 +18,11 @@ type
     btnViewProperties: TButton;
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
-    imglsProperties: TImageList;
     btnProperties: TButton;
+    imgFrontal: TImage;
+    imgKitchen: TImage;
+    imgBedroom: TImage;
+    imgBathroom: TImage;
     procedure btnPropertiesClick(Sender: TObject);
   private
     { Private declarations }
@@ -29,11 +32,11 @@ type
 
 var
   frmMainMenu: TfrmMainMenu;
-  arrBathrooms : array of TImage;
-  arrBedrooms : array of TImage;
-  arrKitchens : array of TImage;
-  arrFrontals : array of TImage;
-  arrFolder : array of String;
+//  arrBathrooms : array of TImage;
+//  arrBedrooms : array of TImage;
+//  arrKitchens : array of TImage;
+//  arrFrontals : array of TImage;
+//  arrFolder : array of String;
   sBathroom, sBedroom, sFrontal, sKitchen : String;
   tFile : TextFile;
 
@@ -55,51 +58,41 @@ AssignFile(tFile, 'Houses Dataset INFO/HousesInfo.txt');
 Reset(tFile);
 ShowMessage('File Assigned');
 
+ iCount := 535;
 
-  while NOT EOF(tFile) do
-    begin
-      iCount := 1 + iCount;
-      //ShowMessage(inttostr(iCount))
-    end;
   ShowMessage('iCount established');
-  setLength(arrBathrooms, strtoint(floattostr(iCount)));
-  setLength(arrBedrooms, strtoint(floattostr(iCount)));
-  setLength(arrKitchens, strtoint(floattostr(iCount)));
-  setLength(arrFrontals, strtoint(floattostr(iCount)));
-ShowMessage('Array lengths set');
- for I := 1 to strtoint(floattostr(iCount)) do
-  begin
 
-   sBathroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bathroom.jpg';
+    I := RandomRange(1, strtoint(floattostr(iCount)));
+
+   sBathroom := 'Houses Dataset/' + inttostr(I) + '_bathroom.jpg';
    if FileExists(sBathroom) then
    begin
-     arrBathrooms[I].Picture.LoadFromFile(sBathroom);
+    imgBathroom.Picture.LoadFromFile(sBathroom);
    end;
-   ShowMessage('Array lengths set');
 
-   sBedroom := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_bedroom.jpg';
+   sBedroom := 'Houses Dataset/' + inttostr(I) + '_bedroom.jpg';
    if FileExists(sBedroom) then
    begin
-     arrBedrooms[I].Picture.LoadFromFile(sBedroom);
+    imgBedroom.Picture.LoadFromFile(sBedroom);
    end;
-   ShowMessage('Array lengths set');
-   sKitchen := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_kitchen.jpg';
+
+   sKitchen := 'Houses Dataset/' + inttostr(I) + '_kitchen.jpg';
    if FileExists(sKitchen) then
    begin
-     arrKitchens[I].Picture.LoadFromFile(sKitchen);
+   imgKitchen.Picture.LoadFromFile(sKitchen);
    end;
-   ShowMessage('Array lengths set');
-   sFrontal := 'Houses-dataset\Houses Dataset\ ' + inttostr(I) + '_frontal.jpg';
+
+   sFrontal := 'Houses Dataset/' + inttostr(I) + '_frontal.jpg';
    if FileExists(sFrontal) then
    begin
-     arrFrontals[I].Picture.LoadFromFile(sFrontal);
+    imgFrontal.Picture.LoadFromFile(sFrontal);
+    ShowMessage('images loaded');
    end;
-   ShowMessage('Array lengths set');
-
-  ShowMessage('Arrays populated');
 
 
-end;
+
+
+
 end;
 
 end.

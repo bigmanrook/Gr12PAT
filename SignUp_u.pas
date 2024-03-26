@@ -37,6 +37,7 @@ procedure TfrmSignUp.btnSignupClick(Sender: TObject);
 
 var
 BExists : Boolean ;
+sCode : String;
 
 begin
 //if Admin is true, then inputbox a passcode which is determined once by me
@@ -85,9 +86,21 @@ begin
         if btnTrue.Enabled then
         begin
           btnTrue.Caption := 'True';
-          TblAcc['Admin'] := True;
+          sCode:= InputBox('Enter the code provided by the software admin', 'Enter code', '');
+
+            if sCode = 'Jude@PHA' then
+            begin
+              TblAcc['Admin'] := btnTrue.Enabled;
+            end
+            else
+            begin
+              ShowMessage('Incorrect code');
+              exit
+            end;
+
         end;
         TblAcc.Post;
+        ShowMessage('Account registered')
 
       end;
 
