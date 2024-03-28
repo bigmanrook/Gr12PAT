@@ -19,7 +19,8 @@ type
      fRent : Boolean;
   public
     { Public declarations }
-
+  constructor Create(sAccount, sUsername, sPassword : String ; iPropertyNo : Integer; rNetValue : Real ; bRent : Boolean);
+  function getProperties(sAccount : String) : Integer;
   end;
 
 

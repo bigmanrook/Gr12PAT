@@ -1,9 +1,9 @@
-object frmLoginScreen: TfrmLoginScreen
+object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Login Screen'
-  ClientHeight = 429
-  ClientWidth = 606
+  Caption = 'Form1'
+  ClientHeight = 441
+  ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,12 +11,19 @@ object frmLoginScreen: TfrmLoginScreen
   Font.Name = 'Segoe UI'
   Font.Style = []
   TextHeight = 15
+  object lblUserName: TLabel
+    Left = 192
+    Top = 115
+    Width = 53
+    Height = 15
+    Caption = 'Username'
+  end
   object lblAccount: TLabel
     Left = 192
     Top = 163
-    Width = 103
+    Width = 45
     Height = 15
-    Caption = 'Account/Username'
+    Caption = 'Account'
   end
   object lblPassword: TLabel
     Left = 192
@@ -32,22 +39,29 @@ object frmLoginScreen: TfrmLoginScreen
     Height = 25
     Caption = 'Login'
     TabOrder = 0
-    OnClick = btnLoginClick
+  end
+  object edtName: TEdit
+    Left = 328
+    Top = 112
+    Width = 121
+    Height = 23
+    TabOrder = 1
+    Text = 'Username'
   end
   object edtAccount: TEdit
     Left = 328
     Top = 160
     Width = 121
     Height = 23
-    TabOrder = 1
-    Text = 'Account/Username'
+    TabOrder = 2
+    Text = 'Account '
   end
   object edtPassword: TEdit
     Left = 328
     Top = 208
     Width = 121
     Height = 23
-    TabOrder = 2
+    TabOrder = 3
     Text = 'Password'
   end
   object btnSignup: TButton
@@ -56,8 +70,7 @@ object frmLoginScreen: TfrmLoginScreen
     Width = 75
     Height = 25
     Caption = 'Sign Up'
-    TabOrder = 3
-    OnClick = btnSignupClick
+    TabOrder = 4
   end
   object btnResetPassword: TButton
     Left = 273
@@ -65,6 +78,6 @@ object frmLoginScreen: TfrmLoginScreen
     Width = 103
     Height = 25
     Caption = 'Forgot stuff...?'
-    TabOrder = 4
+    TabOrder = 5
   end
 end

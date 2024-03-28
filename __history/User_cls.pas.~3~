@@ -4,10 +4,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Property_cls;
 
 type
-  TUser = class(TObject)
+  TUser = class(TProperty)
 
   private
     { Private declarations }
@@ -19,7 +19,8 @@ type
      fRent : Boolean;
   public
     { Public declarations }
-
+  constructor Create(sAccount, sUsername, sPassword : String ; iPropertyNo : Integer; rNetValue : Real ; bRent : Boolean);
+  function getProperties(sAccount) : Integer;
   end;
 
 
