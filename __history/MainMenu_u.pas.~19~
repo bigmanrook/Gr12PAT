@@ -142,8 +142,10 @@ end;
 
 procedure TfrmMainMenu.btnViewPropertiesClick(Sender: TObject);
 begin
- with LoginScreen_u.frmLoginScreen, User_cls.TUser do
-    User.getProperties(//User[sAccount]);
+ with LoginScreen_u.frmLoginScreen, User_cls do
+   begin
+    getProperties(User);
+   end;
 
 end;
 

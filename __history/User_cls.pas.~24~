@@ -52,7 +52,7 @@ begin
 
 end;
 
-procedure TUser.getProperties(sAccount: String);
+function TUser.getProperties(sAccount: String);
 
 var
 iProperties : Integer;

@@ -144,12 +144,12 @@ object frmMainMenu: TfrmMainMenu
     Proportional = True
     Stretch = True
   end
-  object lblPFP: TLabel
-    Left = 24
+  object Label1: TLabel
+    Left = 0
     Top = 25
-    Width = 53
+    Width = 106
     Height = 47
-    Caption = 'Init'
+    Caption = 'Label1'
     Color = clHighlight
     Font.Charset = ANSI_CHARSET
     Font.Color = clTeal
@@ -182,7 +182,6 @@ object frmMainMenu: TfrmMainMenu
     Height = 25
     Caption = 'View Properties'
     TabOrder = 2
-    OnClick = btnViewPropertiesClick
   end
   object btnEditProperties: TButton
     Left = 8

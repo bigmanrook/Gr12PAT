@@ -56,15 +56,15 @@ begin
 
          if BExists = True then
           begin
-            ShowMessage('This user already exists');
-            frmLoginScreen.Visible := True;
-            frmSignUp.Visible := False;
+            ShowMessage('This user already exists')
           end;
 
-         if ((edtAccount.Text = TblAcc['Account']) OR (edtAccount.Text = TblAcc['User Alias'])) then
+         if ((edtAccount.Text = TblAcc['Account']) OR (edtAccount.Text = TblAcc['User Alias'])) AND (edtPassword.Text = 'Password') then
           begin
 
             BExists := True;
+            frmLoginScreen.Visible := True;
+            frmSignUp.Visible := True;
 
           end
           else

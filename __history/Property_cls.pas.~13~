@@ -48,16 +48,6 @@ constructor TProperty.Create(iPropertyNo: Integer; sPropertyOwner,
   rPropertyArea, rPropertyPerimeter: Real; bforSale, btoLet: Boolean);
 begin
 
-    fPropertyNo := iPropertyNo;
-    fOwner := sPropertyOwner;
-    fCompletionDate := TCompleteDate;
-    fPropertyLocation := sPropertyLocation;
-    fPropertyValue := sPropertyValue;
-    fPropertyArea := rPropertyArea;
-    fPropertyPerimeter := rPropertyPerimeter;
-    fForSale := bforSale;
-    fToLet := btoLet;
-
 end;
 
 procedure TProperty.setPropertyArea(rPropertyArea: Real);

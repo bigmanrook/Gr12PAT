@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u, system.Math, jpeg,
-  Vcl.Imaging.pngimage, User_cls, Property_cls;
+  Vcl.Imaging.pngimage, Property_cls;
 
 type
   TfrmMainMenu = class(TForm)
@@ -142,8 +142,11 @@ end;
 
 procedure TfrmMainMenu.btnViewPropertiesClick(Sender: TObject);
 begin
- with LoginScreen_u.frmLoginScreen, User_cls.TUser do
-    User.getProperties(//User[sAccount]);
+
+with Property_cls do
+  begin
+
+  end;
 
 end;
 

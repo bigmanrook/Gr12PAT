@@ -22,7 +22,7 @@ type
 
   arrProperties : array of Integer;
   constructor Create(sAccount, sUsername, sPassword : String ; sNetValue : String ; bRent, bAdmin : Boolean);
-  procedure getProperties(sAccount : String);
+  function getProperties(sAccount : String) : integer;
   procedure setProfile(sAccount, sUsername, sPassword, bAdmin : String);
   function calculateNet(sAccount : String) : String;
 
@@ -52,7 +52,7 @@ begin
 
 end;
 
-procedure TUser.getProperties(sAccount: String);
+function TUser.getProperties(sAccount: String): integer;
 
 var
 iProperties : Integer;

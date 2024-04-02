@@ -13,14 +13,9 @@ type
   private
     { Private declarations }
     fPropertyNo : Integer;
-    fOwner : String;
-    fCompletionDate : TDateTime;
-    fPropertyLocation : String;
-    fPropertyValue : String;
     fPropertyArea : Real;
-    fPropertyPerimeter : Real;
-    fForSale : Boolean;
-    fToLet : Boolean;
+    fPropertyLocation : String;
+
 
 
   public
@@ -47,16 +42,6 @@ constructor TProperty.Create(iPropertyNo: Integer; sPropertyOwner,
   sPropertyLocation: String; TCompleteDate: TDateTime; sPropertyValue: String;
   rPropertyArea, rPropertyPerimeter: Real; bforSale, btoLet: Boolean);
 begin
-
-    fPropertyNo := iPropertyNo;
-    fOwner := sPropertyOwner;
-    fCompletionDate := TCompleteDate;
-    fPropertyLocation := sPropertyLocation;
-    fPropertyValue := sPropertyValue;
-    fPropertyArea := rPropertyArea;
-    fPropertyPerimeter := rPropertyPerimeter;
-    fForSale := bforSale;
-    fToLet := btoLet;
 
 end;
 
