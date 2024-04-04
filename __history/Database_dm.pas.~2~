@@ -46,7 +46,6 @@ begin
  qryP4A := TADOQuery.Create(DataModule1);
 
  ConP4A.ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Properties4All.mdb;Persist Security Info=False';
- qryP4A.DataSource := dscAcc;
  ConP4A.LoginPrompt := False;
  ConP4A.Open;
 
