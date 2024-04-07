@@ -22,7 +22,7 @@ type
 
   arrProperties : array of Integer;
   constructor Create(sAccount, sUsername, sPassword : String ; sNetValue : String ; bRent, bAdmin : Boolean);
-  procedure getProperties(sAccount : String);
+  function getName() : string;
   procedure setProfile(sAccount, sUsername, sPassword, bAdmin : String);
   function calculateNet(sAccount : String) : String;
 
@@ -52,36 +52,11 @@ begin
 
 end;
 
-procedure TUser.getProperties(sAccount: String);
-
-var
-iProperties : Integer;
-
+function TUser.getName: string;
 begin
-  //Find all properties under account name, MAINMENU
- with DataModule1.TblAcc , DataModule1.TblProperties do
-   begin
-
-      iProperties := 0;
-
-       while NOT DataModule1.TblProperties.EOF do
-      begin
-
-        if DataModule1.tblProperties['Owner'] = DataModule1.tblAcc['User Alias'] then
-          begin
-
-            inc(iProperties);
-            arrProperties[iProperties] := DataModule1.tblProperties['Property Number'];
-
-          end;
-
-      end;
-
-      setLength(arrProperties, iProperties);
-
-
-   end;
+ result := fAccount;
 end;
+
 
 procedure TUser.setProfile(sAccount, sUsername, sPassword, bAdmin: String);
 begin

@@ -7,7 +7,8 @@ uses
   Database_dm in 'Database_dm.pas' {DataModule1: TDataModule},
   Property_cls in 'Property_cls.pas',
   User_cls in 'User_cls.pas',
-  SignUp_u in 'SignUp_u.pas' {frmSignUp};
+  SignUp_u in 'SignUp_u.pas' {frmSignUp},
+  PropertyView_u in 'PropertyView_u.pas' {frmPropertyView};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TfrmMainMenu, frmMainMenu);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmSignUp, frmSignUp);
+  Application.CreateForm(TfrmPropertyView, frmPropertyView);
   Application.Run;
 end.
