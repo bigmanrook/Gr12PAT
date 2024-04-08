@@ -19,7 +19,6 @@ object frmPropertyView: TfrmPropertyView
     Height = 25
     Caption = 'Back'
     TabOrder = 0
-    OnClick = btnReturnClick
   end
   object dbPropertyView: TDBGrid
     Left = 8

@@ -12,7 +12,6 @@ type
     btnReturn: TButton;
     dbPropertyView: TDBGrid;
     procedure LoadProperties(Sender: TObject);
-    procedure btnReturnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,12 +24,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfrmPropertyView.btnReturnClick(Sender: TObject);
-begin
-frmPropertyView.Visible := False;
-frmLoginScreen.Visible := True;
-end;
 
 procedure TfrmPropertyView.LoadProperties(Sender: TObject);
 
@@ -46,7 +39,7 @@ sAccount := User.getName();
 
 qryP4A.SQL.Clear;
 qryP4A.Open;
-qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner FROM Account INNER JOIN Properties ON Properties.Owner=' + sAccount + ' ORDER BY Property Number');
+qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner FROM Account INNER JOIN Properties ON Properties.Owner=' + '"' + sAccount + '"' + ' ORDER BY Property Number');
 qryP4A.ExecSQL;
 qryP4A.Close;
 
