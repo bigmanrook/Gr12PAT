@@ -46,7 +46,9 @@ sAccount := User.getName();
 
 qryP4A.SQL.Clear;
 qryP4A.Open;
-qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner FROM Account INNER JOIN Properties ON Properties.Owner=' + sAccount + ' ORDER BY Property Number');
+qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner, Properties.PropertyNo FROM Account, Properties WHERE Account.Account = ''' + sAccount + ''' AND Account.Account = Properties.Owner ORDER BY Properties.PropertyNumber');
+
+
 qryP4A.ExecSQL;
 qryP4A.Close;
 

@@ -53,9 +53,12 @@ begin
  dscAcc.DataSet := tblAcc;
  tblProperties.Connection := conP4A;
  tblProperties.TableName := 'Properties';
- dscProperties.DataSet := tblAcc;
- qryP4A.DataSource := dscAcc;
+ dscProperties.DataSet := tblProperties;
+ qryP4A.Connection := conP4A;
 
+
+ tblAcc.Active := True;
+ tblProperties.Active := True;
  tblAcc.Open;
  tblProperties.Open;
 
