@@ -64,7 +64,7 @@ begin
               begin
 
                 sMissing := tblAcc['User Alias'];
-                User := TUser.Create(sUserAcc, sMissing, sPassword, tblAcc['Property No'], tblAcc['Net Value'], tblAcc['Renting']);
+                User := TUser.Create(sUserAcc, sMissing, sPassword, tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
                 BLogin := true;
                 frmLoginScreen.Visible := False;
                 frmMainMenu.Visible := True;
@@ -74,7 +74,7 @@ begin
               begin
 
                 sMissing := tblAcc['Account'];
-                User := TUser.Create(sMissing, sUserAcc, sPassword, tblAcc['Property No'], tblAcc['Net Value'], tblAcc['Renting']);
+                User := TUser.Create(sMissing, sUserAcc, sPassword,  tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
                 BLogin := true;
                 frmLoginScreen.Visible := False;
                 frmMainMenu.Visible := True;

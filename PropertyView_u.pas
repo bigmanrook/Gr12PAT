@@ -44,6 +44,8 @@ begin
 
 sAccount := User.getName();
 
+qryP4A.DataSource := dscAcc;
+
 qryP4A.SQL.Clear;
 qryP4A.Open;
 qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner, Properties.PropertyNo FROM Account, Properties WHERE Account.Account = ''' + sAccount + ''' AND Account.Account = Properties.Owner ORDER BY Properties.PropertyNumber');
@@ -52,7 +54,7 @@ qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner, Properties.PropertyNo 
 qryP4A.ExecSQL;
 qryP4A.Close;
 
-dbPropertyView.DataSource := dscAcc;
+
 
 
 
