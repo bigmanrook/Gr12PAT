@@ -18,7 +18,7 @@ type
     TblProperties : TADOTable;
     qryP4A : TADOQuery;
     dscAcc : TDataSource;
-    dscProperties : TDataSource;
+    SQLDatasource : TDataSource;
 
 
   end;
@@ -40,14 +40,15 @@ begin
 
  conP4A := TADOConnection.Create( DataModule1 );
  tblAcc := TADOTable.Create( DataModule1 );
- dscAcc := TDataSource.Create( DataModule1 );
  tblProperties := TADOTable.Create( DataModule1 );
- dscProperties := TDataSource.Create( DataModule1 );
  qryP4A := TADOQuery.Create(DataModule1);
+ SQLDatasource := TDataSource.Create(DataModule1);
 
  ConP4A.ConnectionString := 'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Properties4All.mdb;Persist Security Info=False';
  ConP4A.LoginPrompt := False;
  ConP4A.Open;
+ qryP4A.Connection := conP4A;
+ SQLDatasource.DataSet := qryP4A;
 
  tblAcc.Connection := conP4A;
  tblAcc.TableName := 'Account';
@@ -56,9 +57,6 @@ begin
  tblProperties.TableName := 'Properties';
 
 
- dscAcc.DataSet := tblAcc;
- dscProperties.DataSet := tblProperties;
- qryP4A.Connection := conP4A;
 
 
  tblAcc.Active := True;
