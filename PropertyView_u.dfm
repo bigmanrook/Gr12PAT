@@ -10,7 +10,7 @@ object frmPropertyView: TfrmPropertyView
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  OnCreate = LoadProperties
+  OnShow = LoadProperties
   TextHeight = 15
   object btnReturn: TButton
     Left = 545

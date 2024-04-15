@@ -3,7 +3,8 @@ unit PropertyView_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.Win.ADODB, Database_dm,
   Vcl.Grids, Vcl.StdCtrls, User_cls, Vcl.DBGrids, LoginScreen_u;
 
@@ -28,38 +29,33 @@ implementation
 
 procedure TfrmPropertyView.btnReturnClick(Sender: TObject);
 begin
-frmPropertyView.Visible := False;
-frmLoginScreen.Visible := True;
+  frmPropertyView.Visible := False;
+  frmLoginScreen.Visible := True;
 end;
 
 procedure TfrmPropertyView.LoadProperties(Sender: TObject);
 
 var
-sAccount : String;
+  sAccount: String;
 
 begin
-//Use relationships and SQL to load Properties under user account attribute
-with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
-begin
+  // Use relationships and SQL to load Properties under user account attribute
+  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+  begin
 
-sAccount := User.getName();
+    sAccount := User.getName();
 
-qryP4A.DataSource := dscAcc;
+    qryP4A.Close;
+    qryP4A.SQL.Clear;
+    qryP4A.SQL.Add('SELECT A.Account, P.Owner, P.PropertyNumber FROM Account as A, Properties as P WHERE A.Account = ''' + sAccount + ''' AND A.Account = P.Owner ORDER BY P.PropertyNumber');
+    //qryP4A.SQL.add('SELECT * FROM Account');
 
-qryP4A.SQL.Clear;
-qryP4A.Open;
-qryP4A.SQL.Add('SELECT Account.Account, Properties.Owner, Properties.PropertyNo FROM Account, Properties WHERE Account.Account = ''' + sAccount + ''' AND Account.Account = Properties.Owner ORDER BY Properties.PropertyNumber');
+    qryP4A.ExecSQL;
+    qryP4A.Open;
 
+    dbPropertyView.DataSource := SQLDatasource;
 
-qryP4A.ExecSQL;
-qryP4A.Close;
-
-
-
-
-
-
-end;
+  end;
 end;
 
 end.
