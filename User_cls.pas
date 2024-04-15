@@ -22,7 +22,8 @@ type
 
   arrProperties : array of Integer;
   constructor Create(sAccount, sUsername, sPassword : String ; sNetValue : String ; bRent, bAdmin : Boolean);
-  function getName() : string;
+  function getAcc() : string;
+  function getInit() : string;
   procedure setProfile(sAccount, sUsername, sPassword, bAdmin : String);
   function calculateNet(sAccount : String) : String;
 
@@ -52,11 +53,17 @@ begin
 
 end;
 
-function TUser.getName: string;
+function TUser.getAcc: string;
 begin
  result := fAccount;
 end;
 
+
+function TUser.getInit: string;
+begin
+ //Get initials
+ result := copy(fUsername, 1, 4);
+end;
 
 procedure TUser.setProfile(sAccount, sUsername, sPassword, bAdmin: String);
 begin

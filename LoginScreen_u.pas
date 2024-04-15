@@ -62,10 +62,9 @@ begin
           begin
             if edtAccount.Text = TblAcc['Account'] then
               begin
-
-                sMissing := tblAcc['User Alias'];
-                User := TUser.Create(sUserAcc, sMissing, sPassword, tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
+                User := TUser.Create( tblAcc['Account'] ,tblAcc['User Alias'], sPassword, tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
                 BLogin := true;
+                //Showmessage(User.getAcc());
                 frmLoginScreen.Visible := False;
                 frmMainMenu.Visible := True;
                 //Make object attributes equal to their corresponding variables, to create a User object, or even assign everything to an string array and then convert to respective values...
@@ -73,9 +72,9 @@ begin
             if edtAccount.Text = TblAcc['User Alias'] then
               begin
 
-                sMissing := tblAcc['Account'];
-                User := TUser.Create(sMissing, sUserAcc, sPassword,  tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
+                User := TUser.Create(tblAcc['Account'], tblAcc['User Alias'], sPassword,  tblAcc['User Net Value'], tblAcc['For Rent'], tblAcc['Admin']);
                 BLogin := true;
+                //Showmessage(User.getAcc());
                 frmLoginScreen.Visible := False;
                 frmMainMenu.Visible := True;
 

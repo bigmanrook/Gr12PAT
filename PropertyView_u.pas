@@ -43,13 +43,13 @@ begin
   with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
   begin
 
-    sAccount := User.getName();
+    sAccount := User.getAcc();
+    //SHowmessage(sAccount);
 
     qryP4A.Close;
     qryP4A.SQL.Clear;
-    qryP4A.SQL.Add('SELECT A.Account, P.Owner, P.PropertyNumber FROM Account as A, Properties as P WHERE A.Account = ''' + sAccount + ''' AND A.Account = P.Owner ORDER BY P.PropertyNumber');
-    //qryP4A.SQL.add('SELECT * FROM Account');
-
+    qryP4A.SQL.Add('SELECT * FROM Properties as P WHERE P.Owner = ''' + sAccount + '''');
+    //qryP4A.SQL.add('SELECT * FROM Account');     WHERE P.Owner = ''' + sAccount + '''
     qryP4A.ExecSQL;
     qryP4A.Open;
 
