@@ -8,7 +8,8 @@ uses
   Property_cls in 'Property_cls.pas',
   User_cls in 'User_cls.pas',
   SignUp_u in 'SignUp_u.pas' {frmSignUp},
-  PropertyView_u in 'PropertyView_u.pas' {frmPropertyView};
+  PropertyView_u in 'PropertyView_u.pas' {frmPropertyView},
+  PropertyEdit_u in 'PropertyEdit_u.pas' {frmPropertyEdit};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmSignUp, frmSignUp);
   Application.CreateForm(TfrmPropertyView, frmPropertyView);
+  Application.CreateForm(TfrmPropertyEdit, frmPropertyEdit);
   Application.Run;
 end.

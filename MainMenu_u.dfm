@@ -192,6 +192,7 @@ object frmMainMenu: TfrmMainMenu
     Height = 25
     Caption = 'Edit Properties'
     TabOrder = 3
+    OnClick = btnEditPropertiesClick
   end
   object btnProperties: TButton
     Left = 304

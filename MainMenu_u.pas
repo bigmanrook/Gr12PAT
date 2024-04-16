@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u, system.Math, jpeg,
-  Vcl.Imaging.pngimage, User_cls, Property_cls, PropertyView_u;
+  Vcl.Imaging.pngimage, User_cls, Property_cls, PropertyView_u, PropertyEdit_u;
 
 type
   TfrmMainMenu = class(TForm)
@@ -28,6 +28,7 @@ type
     procedure btnPropertiesClick(Sender: TObject);
     procedure btnViewPropertiesClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnEditPropertiesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +49,18 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmMainMenu.btnEditPropertiesClick(Sender: TObject);
+begin
+ with LoginScreen_u.frmLoginScreen, PropertyEdit_u.frmPropertyEdit do
+    begin
+
+    frmMainMenu.Visible := False;
+    frmPropertyEdit.Visible := True;
+
+    end;
+
+end;
 
 procedure TfrmMainMenu.btnPropertiesClick(Sender: TObject);
 
