@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Database_dm, LoginScreen_u, Vcl.ComCtrls;
+  Vcl.DBGrids, Database_dm, LoginScreen_u, Vcl.ComCtrls, Property_cls;
 
 type
   TfrmPropertyEdit = class(TForm)
@@ -40,6 +40,7 @@ procedure TfrmPropertyEdit.FormShow(Sender: TObject);
 var
 sAccount : String;
 iRecords, I : Integer;
+UserProperty : TProperty;
 
 begin
  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do

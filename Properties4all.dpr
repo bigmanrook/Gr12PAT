@@ -9,7 +9,8 @@ uses
   User_cls in 'User_cls.pas',
   SignUp_u in 'SignUp_u.pas' {frmSignUp},
   PropertyView_u in 'PropertyView_u.pas' {frmPropertyView},
-  PropertyEdit_u in 'PropertyEdit_u.pas' {frmPropertyEdit};
+  PropertyEdit_u in 'PropertyEdit_u.pas' {frmPropertyEdit},
+  PropertyNew_u in 'PropertyNew_u.pas' {frmPropertyNew};
 
 {$R *.res}
 
@@ -22,5 +23,6 @@ begin
   Application.CreateForm(TfrmSignUp, frmSignUp);
   Application.CreateForm(TfrmPropertyView, frmPropertyView);
   Application.CreateForm(TfrmPropertyEdit, frmPropertyEdit);
+  Application.CreateForm(TfrmPropertyNew, frmPropertyNew);
   Application.Run;
 end.

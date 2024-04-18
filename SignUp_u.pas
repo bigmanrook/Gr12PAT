@@ -41,7 +41,7 @@ sCode : String;
 
 begin
 //if Admin is true, then inputbox a passcode which is determined once by me
-
+  BExists := False;
 
   with Database_dm.DataModule1 do
   begin
@@ -57,8 +57,10 @@ begin
          if BExists = True then
           begin
             ShowMessage('This user already exists');
+
             frmLoginScreen.Visible := True;
             frmSignUp.Visible := False;
+            exit
           end;
 
          if ((edtAccount.Text = TblAcc['Account']) OR (edtAccount.Text = TblAcc['User Alias'])) then

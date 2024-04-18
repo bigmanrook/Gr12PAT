@@ -2,8 +2,8 @@ object frmLoginScreen: TfrmLoginScreen
   Left = 0
   Top = 0
   Caption = 'Login Screen'
-  ClientHeight = 418
-  ClientWidth = 592
+  ClientHeight = 417
+  ClientWidth = 588
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -41,6 +41,7 @@ object frmLoginScreen: TfrmLoginScreen
     Height = 23
     TabOrder = 1
     Text = 'Account/Username'
+    OnClick = edtAccountClick
   end
   object edtPassword: TEdit
     Left = 328
@@ -49,6 +50,7 @@ object frmLoginScreen: TfrmLoginScreen
     Height = 23
     TabOrder = 2
     Text = 'Password'
+    OnClick = edtPasswordClick
   end
   object btnSignup: TButton
     Left = 382

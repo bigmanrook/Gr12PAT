@@ -125,6 +125,10 @@
             <Form>frmPropertyEdit</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="PropertyNew_u.pas">
+            <Form>frmPropertyNew</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

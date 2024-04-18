@@ -17,6 +17,8 @@ type
     btnResetPassword: TButton;
     procedure btnLoginClick(Sender: TObject);
     procedure btnSignupClick(Sender: TObject);
+    procedure edtAccountClick(Sender: TObject);
+    procedure edtPasswordClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +110,17 @@ procedure TfrmLoginScreen.btnSignupClick(Sender: TObject);
 begin
 frmLoginScreen.Visible := False;
 frmSignUp.Visible := True;
+end;
+
+
+procedure TfrmLoginScreen.edtAccountClick(Sender: TObject);
+begin
+edtAccount.Clear;
+end;
+
+procedure TfrmLoginScreen.edtPasswordClick(Sender: TObject);
+begin
+edtPassword.Clear;
 end;
 
 end.
