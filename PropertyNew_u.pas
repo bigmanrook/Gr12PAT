@@ -39,7 +39,26 @@ implementation
 procedure TfrmPropertyNew.btnEnterClick(Sender: TObject);
 begin
 
-// SQL insertion
+
+ if (edtArea.Text = '') OR (edtDoC.Caption = '') OR (edtLocation.Text = '') OR (edtValue.Text = '') OR (edtPerimeter.Text = '') OR (edtValue.Text = '') then
+  begin
+    ShowMessage('Please fill out all empty text fields');
+  end
+  else
+  begin
+   with Database_dm.DataModule1 do
+    begin
+     qryP4A
+     //qryP4A.SQL.Add
+
+    end;
+   // SQL insertion
+
+
+  end;
+
+
+
 
 // qryP4A.SQL.Add();
 
