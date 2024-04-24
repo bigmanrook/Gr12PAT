@@ -2,8 +2,8 @@ object frmLoginScreen: TfrmLoginScreen
   Left = 0
   Top = 0
   Caption = 'Login Screen'
-  ClientHeight = 417
-  ClientWidth = 588
+  ClientHeight = 416
+  ClientWidth = 584
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -60,13 +60,5 @@ object frmLoginScreen: TfrmLoginScreen
     Caption = 'Sign Up'
     TabOrder = 3
     OnClick = btnSignupClick
-  end
-  object btnResetPassword: TButton
-    Left = 273
-    Top = 344
-    Width = 103
-    Height = 25
-    Caption = 'Forgot stuff...?'
-    TabOrder = 4
   end
 end

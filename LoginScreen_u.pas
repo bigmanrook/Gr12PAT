@@ -14,7 +14,6 @@ type
     edtPassword: TEdit;
     lblPassword: TLabel;
     btnSignup: TButton;
-    btnResetPassword: TButton;
     procedure btnLoginClick(Sender: TObject);
     procedure btnSignupClick(Sender: TObject);
     procedure edtAccountClick(Sender: TObject);
