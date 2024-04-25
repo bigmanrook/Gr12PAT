@@ -37,6 +37,13 @@ implementation
 {$R *.dfm}
 
 procedure TfrmPropertyNew.btnEnterClick(Sender: TObject);
+
+var
+sOwner, sProperty_Location  : String;
+TDate_of_Completion : TDateTime;
+rProperty_Value, rArea, rPerimeter : Real;
+bFor_Sale, bTo_Let : boolean;
+
 begin
 
 
@@ -46,10 +53,24 @@ begin
   end
   else
   begin
-   with Database_dm.DataModule1 do
+   with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
     begin
-     qryP4A
-     //qryP4A.SQL.Add
+
+      sOwner := User.getAcc();
+      sProperty_Location := edtLocation.Text;
+      TDate_of_Completion := DateTimePicker1.DateTime;
+      rProperty_Value := StrtoFloat(edtValue.Text);
+      rArea := StrtoFloat(edtArea.Text);
+      rPerimeter := StrtoFloat(edtPerimeter.Text);
+      bFor_Sale := chkbxForSale.Checked;
+      bTo_Let := chkbxRent.Checked;
+
+      qryP4A.Close;
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('INSERT INTO Properties (Owner, Property_Location, Date_of_Completion, Property_Value, Area, Perimeter, For_Sale, To _Let) VALUES (''' + sOwner + '''), (''' + sProperty_Location + '''), (''' + DatetoStr(TDate_Of_Completion) + '''),(''' + DatetoStr(TDate_Of_Completion) + ''');');
+      qryP4A.ExecSQL;
+      qryP4A.Open;
+       //qryP4A.SQL.Add
 
     end;
    // SQL insertion
