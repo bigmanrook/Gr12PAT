@@ -55,7 +55,7 @@ begin
   begin
    with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
     begin
-
+      // SQL insertion
       sOwner := User.getAcc();
       sProperty_Location := edtLocation.Text;
       TDate_of_Completion := DateTimePicker1.DateTime;
@@ -67,13 +67,24 @@ begin
 
       qryP4A.Close;
       qryP4A.SQL.Clear;
-      qryP4A.SQL.Add('INSERT INTO Properties (Owner, Property_Location, Date_of_Completion, Property_Value, Area, Perimeter, For_Sale, To _Let) VALUES (''' + sOwner + '''), (''' + sProperty_Location + '''), (''' + DatetoStr(TDate_Of_Completion) + '''),(''' + DatetoStr(TDate_Of_Completion) + ''');');
+//      qryP4A.SQL.Text := 'INSERT INTO Properties (Owner, Property_Location) VALUES ((''' + sOwner + '''), (''' + sProperty_Location + ''')) ;';
+      qryP4A.SQL.Add('INSERT INTO Properties');
+      qryP4A.SQL.Add('(Owner, Property_Location, Date_of_Completion, Property_Value, Area, Perimeter, For _Sale, To _Let)');
+      qryP4A.SQL.Add('VALUES (:Owner, :Property_Location, :Date_of_Completion, :Property_Value, :Area, :Perimeter, :For _Sale, :To _Let)');
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Parameters.ParamByName('Property_Location').Value := sProperty_Location;
+      qryP4A.Parameters.ParamByName('Date_of_Completion').Value := Datetostr(TDate_Of_Completion);
+      qryP4A.Parameters.ParamByName('Property_Value').Value := floattostr(rProperty_Value);
+      qryP4A.Parameters.ParamByName('Area').Value := floattostr(rArea);
+      qryP4A.Parameters.ParamByName('Perimeter').Value := floattostr(rPerimeter);
+      qryP4A.Parameters.ParamByName('For _Sale').Value := booltostr(bFor_Sale);
+      qryP4A.Parameters.ParamByName('To _Let').Value := booltostr(bTo_Let);
       qryP4A.ExecSQL;
+
       qryP4A.Open;
-       //qryP4A.SQL.Add
 
     end;
-   // SQL insertion
+
 
 
   end;

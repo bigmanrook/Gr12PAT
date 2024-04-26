@@ -112,6 +112,7 @@ object frmMainMenu: TfrmMainMenu
     Width = 89
     Height = 22
     Caption = 'Add Property'
+    OnClick = btnAddPropertyClick
   end
   object imgFrontal: TImage
     Left = 168
