@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Database_dm, LoginScreen_u, Vcl.ComCtrls;
+  Vcl.DBGrids, Database_dm, LoginScreen_u, Vcl.ComCtrls, Property_cls;
 
 type
   TfrmPropertyEdit = class(TForm)
@@ -39,8 +39,8 @@ procedure TfrmPropertyEdit.FormShow(Sender: TObject);
 
 var
 sAccount : String;
-iRecords : Integer;
-  I: TDataModule1;
+iRecords, I : Integer;
+UserProperty : TProperty;
 
 begin
  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
@@ -58,11 +58,16 @@ begin
 
     dbPropertyView.DataSource := SQLDatasource;
     //Add the Property numbers to the combolist
+    //iRecords := ;       How to get the number of records in table, and then for each row get the Property No ?
 
-    for I := 1 to iRecords do
-      begin
 
-      end;
+
+       while not qryP4A.Eof do
+  begin
+    cmbID.Items.Add(qryP4A['Property_Number']);
+    qryP4A.Next;
+  end;
+
 
 end;
 end;

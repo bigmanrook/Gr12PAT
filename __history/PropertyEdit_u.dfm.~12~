@@ -46,7 +46,6 @@ object frmPropertyEdit: TfrmPropertyEdit
     Height = 25
     Caption = 'Enter information'
     TabOrder = 2
-    OnClick = btnEnterClick
   end
   object edtLocation: TEdit
     Left = 8

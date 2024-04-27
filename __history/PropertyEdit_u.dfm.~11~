@@ -46,7 +46,6 @@ object frmPropertyEdit: TfrmPropertyEdit
     Height = 25
     Caption = 'Enter information'
     TabOrder = 2
-    OnClick = btnEnterClick
   end
   object edtLocation: TEdit
     Left = 8
@@ -112,13 +111,5 @@ object frmPropertyEdit: TfrmPropertyEdit
     Height = 23
     TabOrder = 10
     Text = 'PropertyNo'
-  end
-  object btnDelete: TButton
-    Left = 264
-    Top = 408
-    Width = 113
-    Height = 25
-    Caption = 'Delete record/row'
-    TabOrder = 11
   end
 end

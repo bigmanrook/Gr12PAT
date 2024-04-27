@@ -1,25 +1,27 @@
-unit PropertyNew_u;
+unit PropertyEdit_u;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ComCtrls, Property_cls, Database_dm, LoginScreen_u;
+  Vcl.DBGrids, Database_dm, LoginScreen_u, Vcl.ComCtrls, Property_cls;
 
 type
-  TfrmPropertyNew = class(TForm)
-    btnEnter: TButton;
+  TfrmPropertyEdit = class(TForm)
+    dbPropertyView: TDBGrid;
     btnReturn: TButton;
+    btnEnter: TButton;
+    edtLocation: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    edtValue: TEdit;
+    edtArea: TEdit;
+    edtPerimeter: TEdit;
     chkbxForSale: TCheckBox;
     chkbxRent: TCheckBox;
-    DateTimePicker1: TDateTimePicker;
-    dbPropertyView: TDBGrid;
-    edtArea: TEdit;
+    cmbID: TComboBox;
     edtDoC: TLabel;
-    edtLocation: TEdit;
-    edtPerimeter: TEdit;
-    edtValue: TEdit;
+    btnDelete: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnEnterClick(Sender: TObject);
   private
@@ -29,15 +31,13 @@ type
   end;
 
 var
-  frmPropertyNew: TfrmPropertyNew;
-  UserProperty: TProperty;
+  frmPropertyEdit: TfrmPropertyEdit;
 
 implementation
 
 {$R *.dfm}
 
-procedure TfrmPropertyNew.btnEnterClick(Sender: TObject);
-
+procedure TfrmPropertyEdit.btnEnterClick(Sender: TObject);
 var
 sOwner, sProperty_Location  : String;
 TDate_of_Completion : TDateTime;
@@ -65,48 +65,38 @@ begin
       bFor_Sale := chkbxForSale.Checked;
       bTo_Let := chkbxRent.Checked;
 
-      qryP4A.Close;
       qryP4A.SQL.Clear;
-      qryP4A.SQL.Text := 'INSERT INTO Properties (Owner, Property_Location) VALUES ((''' + sOwner + '''), (''' + sProperty_Location + ''')) ;';
-      qryP4A.SQL.Add('INSERT INTO tbllogin');
-      qryP4A.SQL.Add('(txusername, txpassword, link, full_name)');
-      qryP4A.SQL.Add('VALUES (:txusername, :txpassword, :link, :full_name)');
-      qryP4A.Parameters.ParamByName('txusername').Value := e1;
-      qryP4A.Parameters.ParamByName('txpassword').Value := e2;
-      qryP4A.Parameters.ParamByName('link').Value := cb2;
-      qryP4A.Parameters.ParamByName('full_name').Value := e4;
+      qryP4A.SQL.Add('INSERT INTO Properties');
+      qryP4A.SQL.Add('(Owner, Property_Location, Date_of_Completion, Property_Value, Area, Perimeter, For_Sale, To_Let)');
+      qryP4A.SQL.Add('VALUES (:Owner, :Property_Location, :Date_of_Completion, :Property_Value, :Area, :Perimeter, :For_Sale, :To_Let)');
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Parameters.ParamByName('Property_Location').Value := sProperty_Location;
+      qryP4A.Parameters.ParamByName('Date_of_Completion').Value := TDate_Of_Completion;
+      qryP4A.Parameters.ParamByName('Property_Value').Value := rProperty_Value;
+      qryP4A.Parameters.ParamByName('Area').Value := rArea;
+      qryP4A.Parameters.ParamByName('Perimeter').Value := rPerimeter;
+      qryP4A.Parameters.ParamByName('For_Sale').Value := bFor_Sale;
+      qryP4A.Parameters.ParamByName('To_Let').Value := bTo_Let;
       qryP4A.ExecSQL;
-
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
       qryP4A.Open;
 
+
+
     end;
-
-
-
   end;
-
-
-
-
-// qryP4A.SQL.Add();
-
-//  Object filling
-// with Property_cls.TProperty do
-// begin
-//  UserProperty.Create();
-// end;
-
-
-
 end;
 
-procedure TfrmPropertyNew.FormShow(Sender: TObject);
+procedure TfrmPropertyEdit.FormShow(Sender: TObject);
 
 var
 sAccount : String;
+iRecords, I : Integer;
+UserProperty : TProperty;
 
 begin
-
  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
   begin
 
@@ -125,6 +115,12 @@ begin
     //iRecords := ;       How to get the number of records in table, and then for each row get the Property No ?
 
 
+
+       while not qryP4A.Eof do
+  begin
+    cmbID.Items.Add(qryP4A['Property_Number']);
+    qryP4A.Next;
+  end;
 
 
 end;
