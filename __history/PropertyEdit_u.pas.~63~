@@ -11,19 +11,16 @@ type
   TfrmPropertyEdit = class(TForm)
     dbPropertyView: TDBGrid;
     btnReturn: TButton;
-    btnEnter: TButton;
-    edtLocation: TEdit;
-    DateTimePicker1: TDateTimePicker;
     edtValue: TEdit;
-    edtArea: TEdit;
-    edtPerimeter: TEdit;
     chkbxForSale: TCheckBox;
     chkbxRent: TCheckBox;
     cmbID: TComboBox;
-    edtDoC: TLabel;
     btnDelete: TButton;
+    btnUpdateValue: TButton;
+    btnUpdate: TButton;
     procedure FormShow(Sender: TObject);
-    procedure btnEnterClick(Sender: TObject);
+    procedure btnUpdateValueClick(Sender: TObject);
+    procedure btnUpdateClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,9 +34,48 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPropertyEdit.btnEnterClick(Sender: TObject);
+procedure TfrmPropertyEdit.btnUpdateClick(Sender: TObject);
 var
-sOwner, sProperty_Location  : String;
+sOwner, sProperty_Location, sID  : String;
+TDate_of_Completion : TDateTime;
+rProperty_Value, rArea, rPerimeter : Real;
+bFor_Sale, bTo_Let : boolean;
+
+begin
+
+      with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+    begin
+      // SQL insertion
+      sOwner := User.getAcc();
+      rProperty_Value := StrtoFloat(edtValue.Text);
+      bFor_Sale := chkbxForSale.Checked;
+      bTo_Let := chkbxRent.Checked;
+
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('UPDATE Properties');
+      qryP4A.SQL.Add('SET Owner=(:Owner), For_Sale=(:For_Sale), To_Let=(:To_Let)');
+      qryP4A.SQL.Add('WHERE Property_Number= (:Property_Number)');
+      qryP4A.Parameters.ParamByName('Property_Number').Value := cmbID.Text;
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Parameters.ParamByName('For_Sale').Value := bFor_Sale;
+      qryP4A.Parameters.ParamByName('To_Let').Value := bTo_Let;
+
+
+      qryP4A.ExecSQL;
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Open;
+
+
+
+    end;
+
+end;
+
+procedure TfrmPropertyEdit.btnUpdateValueClick(Sender: TObject);
+var
+sOwner, sProperty_Location, sID  : String;
 TDate_of_Completion : TDateTime;
 rProperty_Value, rArea, rPerimeter : Real;
 bFor_Sale, bTo_Let : boolean;
@@ -47,7 +83,7 @@ bFor_Sale, bTo_Let : boolean;
 begin
 
 
- if (edtArea.Text = '') OR (edtDoC.Caption = '') OR (edtLocation.Text = '') OR (edtValue.Text = '') OR (edtPerimeter.Text = '') OR (edtValue.Text = '') then
+ if (edtValue.Text = '') then
   begin
     ShowMessage('Please fill out all empty text fields');
   end
@@ -57,26 +93,18 @@ begin
     begin
       // SQL insertion
       sOwner := User.getAcc();
-      sProperty_Location := edtLocation.Text;
-      TDate_of_Completion := DateTimePicker1.DateTime;
       rProperty_Value := StrtoFloat(edtValue.Text);
-      rArea := StrtoFloat(edtArea.Text);
-      rPerimeter := StrtoFloat(edtPerimeter.Text);
       bFor_Sale := chkbxForSale.Checked;
       bTo_Let := chkbxRent.Checked;
 
       qryP4A.SQL.Clear;
-      qryP4A.SQL.Add('INSERT INTO Properties');
-      qryP4A.SQL.Add('(Owner, Property_Location, Date_of_Completion, Property_Value, Area, Perimeter, For_Sale, To_Let)');
-      qryP4A.SQL.Add('VALUES (:Owner, :Property_Location, :Date_of_Completion, :Property_Value, :Area, :Perimeter, :For_Sale, :To_Let)');
+      qryP4A.SQL.Add('UPDATE Properties');
+      qryP4A.SQL.Add('SET Owner=(:Owner), Property_Value=(:Property_Value)');
+      qryP4A.SQL.Add('WHERE Property_Number= (:Property_Number)');
+      qryP4A.Parameters.ParamByName('Property_Number').Value := cmbID.Text;
       qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
-      qryP4A.Parameters.ParamByName('Property_Location').Value := sProperty_Location;
-      qryP4A.Parameters.ParamByName('Date_of_Completion').Value := TDate_Of_Completion;
       qryP4A.Parameters.ParamByName('Property_Value').Value := rProperty_Value;
-      qryP4A.Parameters.ParamByName('Area').Value := rArea;
-      qryP4A.Parameters.ParamByName('Perimeter').Value := rPerimeter;
-      qryP4A.Parameters.ParamByName('For_Sale').Value := bFor_Sale;
-      qryP4A.Parameters.ParamByName('To_Let').Value := bTo_Let;
+
       qryP4A.ExecSQL;
       qryP4A.SQL.Clear;
       qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');

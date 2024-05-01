@@ -81,13 +81,13 @@ object frmPropertyEdit: TfrmPropertyEdit
     TabOrder = 7
     OnClick = btnUpdateValueClick
   end
-  object btnUpdate: TButton
+  object btnUpdateSaleRent: TButton
     Left = 8
     Top = 310
-    Width = 113
+    Width = 90
     Height = 25
-    Caption = 'Update Availability'
+    Caption = 'Update'
     TabOrder = 8
-    OnClick = btnUpdateClick
+    OnClick = btnUpdateValueClick
   end
 end
