@@ -43,9 +43,6 @@ bFor_Sale, bTo_Let : boolean;
 
 begin
 
-  //Change item width
-
-
       with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
     begin
       // SQL insertion

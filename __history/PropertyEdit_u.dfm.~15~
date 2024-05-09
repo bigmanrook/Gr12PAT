@@ -33,16 +33,16 @@ object frmPropertyEdit: TfrmPropertyEdit
     TabOrder = 1
   end
   object edtValue: TEdit
-    Left = 471
-    Top = 279
-    Width = 145
+    Left = 8
+    Top = 249
+    Width = 121
     Height = 23
     TabOrder = 2
     Text = 'Value'
   end
   object chkbxForSale: TCheckBox
     Left = 8
-    Top = 247
+    Top = 282
     Width = 97
     Height = 17
     Caption = 'For Sale'
@@ -50,7 +50,7 @@ object frmPropertyEdit: TfrmPropertyEdit
   end
   object chkbxRent: TCheckBox
     Left = 8
-    Top = 270
+    Top = 305
     Width = 97
     Height = 17
     Caption = 'For Rent'
@@ -72,22 +72,31 @@ object frmPropertyEdit: TfrmPropertyEdit
     Caption = 'Delete record/row'
     TabOrder = 6
   end
-  object btnUpdateValue: TButton
-    Left = 496
-    Top = 310
+  object Button1: TButton
+    Left = 135
+    Top = 247
     Width = 90
     Height = 25
-    Caption = 'Update Value'
+    Caption = 'Update'
     TabOrder = 7
-    OnClick = btnUpdateValueClick
+    OnClick = btnUpdateClick
   end
-  object btnUpdate: TButton
-    Left = 8
-    Top = 310
-    Width = 113
+  object Button2: TButton
+    Left = 135
+    Top = 306
+    Width = 90
     Height = 25
-    Caption = 'Update Availability'
+    Caption = 'Update'
     TabOrder = 8
+    OnClick = btnUpdateClick
+  end
+  object Button3: TButton
+    Left = 135
+    Top = 278
+    Width = 90
+    Height = 21
+    Caption = 'Update'
+    TabOrder = 9
     OnClick = btnUpdateClick
   end
 end
