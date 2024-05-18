@@ -21,6 +21,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnUpdateValueClick(Sender: TObject);
     procedure btnUpdateClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnReturnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,7 +34,16 @@ var
 
 implementation
 
+uses MainMenu_u;
+
 {$R *.dfm}
+
+procedure TfrmPropertyEdit.btnReturnClick(Sender: TObject);
+begin
+  frmPropertyEdit.Visible := False;
+  with MainMenu_u.frmMainMenu do
+  frmMainMenu.Visible := True;
+end;
 
 procedure TfrmPropertyEdit.btnUpdateClick(Sender: TObject);
 var
@@ -118,6 +129,11 @@ begin
 
     end;
   end;
+end;
+
+procedure TfrmPropertyEdit.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmPropertyEdit.FormShow(Sender: TObject);

@@ -10,6 +10,7 @@ object frmPropertyNew: TfrmPropertyNew
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object edtDoC: TLabel
@@ -35,6 +36,7 @@ object frmPropertyNew: TfrmPropertyNew
     Height = 25
     Caption = 'Back'
     TabOrder = 1
+    OnClick = btnReturnClick
   end
   object chkbxForSale: TCheckBox
     Left = 8

@@ -22,6 +22,8 @@ type
     edtValue: TEdit;
     procedure FormShow(Sender: TObject);
     procedure btnEnterClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnReturnClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +35,8 @@ var
   UserProperty: TProperty;
 
 implementation
+
+uses MainMenu_u;
 
 {$R *.dfm}
 
@@ -71,21 +75,18 @@ begin
       qryP4A.SQL.Add('VALUES (:Owner, :Property_Location, :Date_of_Completion, :Property_Value, :Area, :Perimeter, :For_Sale, :To_Let)');
       qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
       qryP4A.Parameters.ParamByName('Property_Location').Value := sProperty_Location;
-<<<<<<< HEAD
       qryP4A.Parameters.ParamByName('Date_of_Completion').Value := Datetostr(TDate_Of_Completion);
       qryP4A.Parameters.ParamByName('Property_Value').Value := floattostr(rProperty_Value);
       qryP4A.Parameters.ParamByName('Area').Value := floattostr(rArea);
       qryP4A.Parameters.ParamByName('Perimeter').Value := floattostr(rPerimeter);
       qryP4A.Parameters.ParamByName('For_Sale').Value := booltostr(bFor_Sale);
       qryP4A.Parameters.ParamByName('To_Let').Value := booltostr(bTo_Let);
-=======
       qryP4A.Parameters.ParamByName('Date_of_Completion').Value := TDate_Of_Completion;
       qryP4A.Parameters.ParamByName('Property_Value').Value := rProperty_Value;
       qryP4A.Parameters.ParamByName('Area').Value := rArea;
       qryP4A.Parameters.ParamByName('Perimeter').Value := rPerimeter;
       qryP4A.Parameters.ParamByName('For_Sale').Value := bFor_Sale;
       qryP4A.Parameters.ParamByName('To_Let').Value := bTo_Let;
->>>>>>> c841e68bea12cf393492d6c0ed11baf431b07603
       qryP4A.ExecSQL;
       qryP4A.SQL.Clear;
       qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
@@ -113,6 +114,19 @@ begin
 
 
 
+end;
+
+procedure TfrmPropertyNew.btnReturnClick(Sender: TObject);
+begin
+  frmPropertyNew.Visible := False;
+
+  with MainMenu_u.frmMainMenu do
+  frmMainMenu.Visible := True;
+end;
+
+procedure TfrmPropertyNew.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmPropertyNew.FormShow(Sender: TObject);

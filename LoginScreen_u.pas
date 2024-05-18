@@ -18,6 +18,7 @@ type
     procedure btnSignupClick(Sender: TObject);
     procedure edtAccountClick(Sender: TObject);
     procedure edtPasswordClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -120,6 +121,11 @@ end;
 procedure TfrmLoginScreen.edtPasswordClick(Sender: TObject);
 begin
 edtPassword.Clear;
+end;
+
+procedure TfrmLoginScreen.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 end.

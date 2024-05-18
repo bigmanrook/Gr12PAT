@@ -12,6 +12,7 @@ object frmMainMenu: TfrmMainMenu
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesigned
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object imgProfile: TImage

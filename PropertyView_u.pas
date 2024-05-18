@@ -14,6 +14,7 @@ type
     dbPropertyView: TDBGrid;
     procedure LoadProperties(Sender: TObject);
     procedure btnReturnClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -25,12 +26,20 @@ var
 
 implementation
 
+uses MainMenu_u;
+
 {$R *.dfm}
 
 procedure TfrmPropertyView.btnReturnClick(Sender: TObject);
 begin
   frmPropertyView.Visible := False;
-  frmLoginScreen.Visible := True;
+  with MainMenu_u.frmMainMenu do
+  frmMainMenu.Visible := True;
+end;
+
+procedure TfrmPropertyView.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmPropertyView.LoadProperties(Sender: TObject);

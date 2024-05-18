@@ -10,6 +10,7 @@ object frmSignUp: TfrmSignUp
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   TextHeight = 15
   object lblAccount: TLabel
     Left = 192

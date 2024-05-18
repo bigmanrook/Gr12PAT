@@ -10,6 +10,7 @@ object frmPropertyView: TfrmPropertyView
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   OnShow = LoadProperties
   TextHeight = 15
   object btnReturn: TButton

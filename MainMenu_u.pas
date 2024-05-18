@@ -30,6 +30,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnEditPropertiesClick(Sender: TObject);
     procedure btnAddPropertyClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -159,6 +160,11 @@ begin
 
 
 end;
+procedure TfrmMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
+end;
+
 procedure TfrmMainMenu.FormShow(Sender: TObject);
 begin
      with LoginScreen_u.frmLoginScreen do

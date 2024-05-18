@@ -2,14 +2,15 @@ object frmLoginScreen: TfrmLoginScreen
   Left = 0
   Top = 0
   Caption = 'Login Screen'
-  ClientHeight = 415
-  ClientWidth = 580
+  ClientHeight = 414
+  ClientWidth = 576
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnClose = FormClose
   TextHeight = 15
   object lblAccount: TLabel
     Left = 192
@@ -40,7 +41,6 @@ object frmLoginScreen: TfrmLoginScreen
     Width = 121
     Height = 23
     TabOrder = 1
-    Text = 'Account/Username'
     OnClick = edtAccountClick
   end
   object edtPassword: TEdit
@@ -49,7 +49,6 @@ object frmLoginScreen: TfrmLoginScreen
     Width = 121
     Height = 23
     TabOrder = 2
-    Text = 'Password'
     OnClick = edtPasswordClick
   end
   object btnSignup: TButton

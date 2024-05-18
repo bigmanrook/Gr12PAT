@@ -18,6 +18,7 @@ type
     lblUserType: TLabel;
     btnTrue: TCheckBox;
     procedure btnSignupClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -110,6 +111,11 @@ begin
     end;
   end;
 
+end;
+
+procedure TfrmSignUp.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 end.
