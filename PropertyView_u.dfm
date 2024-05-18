@@ -25,8 +25,8 @@ object frmPropertyView: TfrmPropertyView
   object dbPropertyView: TDBGrid
     Left = 8
     Top = 8
-    Width = 320
-    Height = 120
+    Width = 608
+    Height = 289
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

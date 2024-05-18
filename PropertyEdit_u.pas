@@ -170,6 +170,16 @@ begin
   end;
 
 
+    dbPropertyView.Columns[0].Width := 50;
+  dbPropertyView.Columns[1].Width := 150;
+  dbPropertyView.Columns[2].Width := 100;
+  dbPropertyView.Columns[3].Width := 100;
+  dbPropertyView.Columns[4].Width := 50;
+  dbPropertyView.Columns[5].Width := 50;
+  dbPropertyView.Columns[6].Width := 50;
+  dbPropertyView.Columns[7].Width := 50;
+
+
 end;
 end;
 
