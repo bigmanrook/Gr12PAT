@@ -4,7 +4,7 @@ object frmPropertyNew: TfrmPropertyNew
   Caption = 'PropertyNew'
   ClientHeight = 441
   ClientWidth = 624
-  Color = clBtnFace
+  Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12

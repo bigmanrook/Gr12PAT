@@ -4,7 +4,7 @@ object frmPropertyEdit: TfrmPropertyEdit
   Caption = 'PropertyEdit'
   ClientHeight = 441
   ClientWidth = 624
-  Color = clBtnFace
+  Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -67,12 +67,13 @@ object frmPropertyEdit: TfrmPropertyEdit
     Text = 'PropertyNo'
   end
   object btnDelete: TButton
-    Left = 264
+    Left = 256
     Top = 408
     Width = 113
     Height = 25
     Caption = 'Delete record/row'
     TabOrder = 6
+    OnClick = btnDeleteClick
   end
   object btnUpdateValue: TButton
     Left = 496

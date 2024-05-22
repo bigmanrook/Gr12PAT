@@ -4,7 +4,7 @@ object frmLoginScreen: TfrmLoginScreen
   Caption = 'Login Screen'
   ClientHeight = 415
   ClientWidth = 580
-  Color = clActiveCaption
+  Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12

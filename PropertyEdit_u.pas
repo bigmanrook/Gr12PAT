@@ -23,6 +23,7 @@ type
     procedure btnUpdateClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnReturnClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +38,28 @@ implementation
 uses MainMenu_u;
 
 {$R *.dfm}
+
+procedure TfrmPropertyEdit.btnDeleteClick(Sender: TObject);
+
+var
+sOwner : String;
+
+begin
+  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+
+      begin
+
+        sOwner := User.getAcc();
+
+        qryP4A.SQL.Clear;
+        qryP4A.SQL.Add('UPDATE Properties');
+        qryP4A.ExecSQL;
+        qryP4A.SQL.Clear;
+        qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
+        qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+        qryP4A.Open;
+      end;
+end;
 
 procedure TfrmPropertyEdit.btnReturnClick(Sender: TObject);
 begin
@@ -61,7 +84,6 @@ begin
     begin
       // SQL insertion
       sOwner := User.getAcc();
-      rProperty_Value := StrtoFloat(edtValue.Text);
       bFor_Sale := chkbxForSale.Checked;
       bTo_Let := chkbxRent.Checked;
 
@@ -108,8 +130,6 @@ begin
       // SQL insertion
       sOwner := User.getAcc();
       rProperty_Value := StrtoFloat(edtValue.Text);
-      bFor_Sale := chkbxForSale.Checked;
-      bTo_Let := chkbxRent.Checked;
 
       qryP4A.SQL.Clear;
       qryP4A.SQL.Add('UPDATE Properties');
@@ -170,7 +190,7 @@ begin
   end;
 
 
-    dbPropertyView.Columns[0].Width := 50;
+  dbPropertyView.Columns[0].Width := 50;
   dbPropertyView.Columns[1].Width := 150;
   dbPropertyView.Columns[2].Width := 100;
   dbPropertyView.Columns[3].Width := 100;
