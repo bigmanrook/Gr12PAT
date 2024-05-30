@@ -30,4 +30,22 @@
     <Transaction>2024/04/18 10:07:36.000.757,C:\Users\weljud20\Desktop\Gr12PATNEW\Gr12PAT\Unit1.pas=C:\Users\weljud20\Desktop\Gr12PATNEW\Gr12PAT\PropertyNew_u.pas</Transaction>
     <Transaction>2024/04/18 10:07:36.000.757,C:\Users\weljud20\Desktop\Gr12PATNEW\Gr12PAT\Unit1.dfm=C:\Users\weljud20\Desktop\Gr12PATNEW\Gr12PAT\PropertyNew_u.dfm</Transaction>
   </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="LoginScreen_u.pas"/>
+    <File Path="LoginScreen_u.dfm"/>
+    <File Path="SignUp_u.pas"/>
+    <File Path="SignUp_u.dfm"/>
+    <File Path="MainMenu_u.pas"/>
+    <File Path="MainMenu_u.dfm"/>
+    <File Path="PropertyEdit_u.pas"/>
+    <File Path="PropertyEdit_u.dfm"/>
+    <File Path="PropertyView_u.pas"/>
+    <File Path="PropertyView_u.dfm"/>
+    <File Path="PropertyNew_u.pas"/>
+    <File Path="PropertyNew_u.dfm"/>
+    <File Path="Database_dm.pas"/>
+    <File Path="Database_dm.dfm"/>
+    <File Path="Property_cls.pas"/>
+    <File Path="User_cls.pas"/>
+  </ProjectSortOrder>
 </BorlandProject>

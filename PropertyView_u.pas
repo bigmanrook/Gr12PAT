@@ -53,12 +53,10 @@ begin
   begin
 
     sAccount := User.getAcc();
-    //SHowmessage(sAccount);
 
     qryP4A.Close;
     qryP4A.SQL.Clear;
     qryP4A.SQL.Add('SELECT * FROM Properties as P WHERE P.Owner = ''' + sAccount + '''');
-    //qryP4A.SQL.add('SELECT * FROM Account');     WHERE P.Owner = ''' + sAccount + '''
     qryP4A.ExecSQL;
     qryP4A.Open;
 

@@ -93,19 +93,12 @@ object frmMainMenu: TfrmMainMenu
     Height = 15
     Caption = 'Username'
   end
-  object lblAccount: TLabel
+  object lblAccountMM: TLabel
     Left = 8
     Top = 157
     Width = 45
     Height = 15
     Caption = 'Account'
-  end
-  object lblUser: TLabel
-    Left = 8
-    Top = 178
-    Width = 23
-    Height = 15
-    Caption = 'User'
   end
   object btnAddProperty: TSpeedButton
     Left = 8
@@ -169,6 +162,7 @@ object frmMainMenu: TfrmMainMenu
     Height = 42
     Caption = '?'
     TabOrder = 0
+    OnClick = btnHelpClick
   end
   object btnReturn: TButton
     Left = 8
@@ -177,6 +171,7 @@ object frmMainMenu: TfrmMainMenu
     Height = 25
     Caption = 'Return to Login Screen'
     TabOrder = 1
+    OnClick = btnReturnClick
   end
   object btnViewProperties: TButton
     Left = 8

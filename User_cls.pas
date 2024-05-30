@@ -24,6 +24,7 @@ type
   constructor Create(sAccount, sUsername, sPassword : String ; sNetValue : String ; bRent, bAdmin : Boolean);
   function getAcc() : string;
   function getInit() : string;
+  function getUsername() : string;
   procedure setProfile(sAccount, sUsername, sPassword, bAdmin : String);
   function calculateNet(sAccount : String) : String;
 
@@ -63,6 +64,11 @@ function TUser.getInit: string;
 begin
  //Get initials
  result := copy(fUsername, 1, 4);
+end;
+
+function TUser.getUsername: string;
+begin
+ result := fUsername;
 end;
 
 procedure TUser.setProfile(sAccount, sUsername, sPassword, bAdmin: String);

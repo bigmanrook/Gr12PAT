@@ -93,4 +93,31 @@ object frmPropertyEdit: TfrmPropertyEdit
     TabOrder = 8
     OnClick = btnUpdateClick
   end
+  object btnUpdateValues: TButton
+    Left = 232
+    Top = 310
+    Width = 161
+    Height = 25
+    Caption = 'Update Area and Perimeter'
+    TabOrder = 9
+    OnClick = btnUpdateValuesClick
+  end
+  object edtPerimeter: TEdit
+    Left = 232
+    Top = 247
+    Width = 161
+    Height = 23
+    TabOrder = 10
+    Text = 'Perimeter'
+    OnClick = ErasePerimeter
+  end
+  object edtArea: TEdit
+    Left = 232
+    Top = 281
+    Width = 161
+    Height = 23
+    TabOrder = 11
+    Text = 'Area'
+    OnClick = EraseArea
+  end
 end

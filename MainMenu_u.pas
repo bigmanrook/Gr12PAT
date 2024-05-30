@@ -14,8 +14,7 @@ type
     btnReturn: TButton;
     imgProfile: TImage;
     lblUsername: TLabel;
-    lblAccount: TLabel;
-    lblUser: TLabel;
+    lblAccountMM: TLabel;
     btnViewProperties: TButton;
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
@@ -31,6 +30,8 @@ type
     procedure btnEditPropertiesClick(Sender: TObject);
     procedure btnAddPropertyClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnReturnClick(Sender: TObject);
+    procedure btnHelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,6 +70,32 @@ begin
     frmPropertyEdit.Visible := True;
 
     end;
+
+end;
+
+procedure TfrmMainMenu.btnHelpClick(Sender: TObject);
+
+var
+sLine, sString: String;
+
+begin
+
+  if NOT FileExists('Help.txt') then
+    begin
+      Rewrite(tFile, 'Help.txt');
+    end
+    else
+    begin
+      Assignfile(tFile, 'Help.txt');
+      while NOT EOF(tFile) do
+        begin
+          Readln(tFile, sLine);
+          sString := sString + #13#10 + sLine;
+        end;
+    end;
+
+   ShowMessage(sString);
+
 
 end;
 
@@ -147,6 +174,19 @@ Reset(tFile);
 
 
 
+procedure TfrmMainMenu.btnReturnClick(Sender: TObject);
+begin
+
+   with LoginScreen_u.frmLoginScreen do
+    begin
+
+    frmMainMenu.Visible := False;
+    frmLoginScreen.Visible := True;
+
+    end;
+
+end;
+
 procedure TfrmMainMenu.btnViewPropertiesClick(Sender: TObject);
 begin
  with LoginScreen_u.frmLoginScreen do
@@ -170,6 +210,8 @@ begin
      with LoginScreen_u.frmLoginScreen do
     begin
     lblPFP.Caption := User.getInit;
+    lblAccountMM.Caption := User.getAcc;
+    lblUsername.Caption := User.getUsername;
     end;
 end;
 
