@@ -117,7 +117,12 @@ Reset(tFile);
   //ShowMessage('iCount established');
 
     I := RandomRange(1, strtoint(floattostr(iCount)));
-    J := RandomRange(1, strtoint(floattostr(iCount)));
+
+
+    with LoginScreen_u.frmLoginScreen, Property_cls.TProperty do
+    begin
+    J := 5;
+    end;
 
     sBathroom := 'Houses Dataset/' + inttostr(I) + '_bathroom.jpg';
      if FileExists(sBathroom) then
@@ -162,7 +167,7 @@ Reset(tFile);
      end
    else
     begin
-       J := RandomRange(1, strtoint(floattostr(iCount)));
+       I := RandomRange(1, strtoint(floattostr(iCount)));
     end;
 
 

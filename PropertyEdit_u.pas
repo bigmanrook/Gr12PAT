@@ -58,7 +58,7 @@ begin
         sOwner := User.getAcc();
 
         qryP4A.SQL.Clear;
-        qryP4A.SQL.Add('UPDATE Properties');
+        qryP4A.SQL.Add('DELETE Properties WHERE Owner=(:Owner)');
         qryP4A.ExecSQL;
         qryP4A.SQL.Clear;
         qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');

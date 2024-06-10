@@ -19,7 +19,7 @@ type
     btnUpdateValue: TButton;
     btnUpdate: TButton;
     btnUpdateValues: TButton;
-    btnPerimeter: TEdit;
+    edtPerimeter: TEdit;
     edtArea: TEdit;
     procedure FormShow(Sender: TObject);
     procedure btnUpdateValueClick(Sender: TObject);
@@ -28,6 +28,8 @@ type
     procedure btnReturnClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnUpdateValuesClick(Sender: TObject);
+    procedure ErasePerimeter(Sender: TObject);
+    procedure EraseArea(Sender: TObject);
   private
     { Private declarations }
   public
@@ -159,9 +161,54 @@ procedure TfrmPropertyEdit.btnUpdateValuesClick(Sender: TObject);
 
 var
 rArea, rPerimeter : Real;
+sOwner : String;
 
 begin
 
+    if (edtArea.Text = '') OR (edtPerimeter.Text = '') then
+  begin
+    ShowMessage('Please fill out all empty text fields');
+  end
+  else
+  begin
+   with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+    begin
+      // SQL insertion
+      sOwner := User.getAcc();
+      rPerimeter := StrtoFloat(edtPerimeter.Text);
+      rArea := StrtoFloat(edtArea.Text);
+
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('UPDATE Properties');
+      qryP4A.SQL.Add('SET Owner=(:Owner), Property_Value=(:Property_Value), Area=(:Area), Perimeter=(:Perimeter)');
+      qryP4A.SQL.Add('WHERE Property_Number= (:Property_Number)');
+      qryP4A.Parameters.ParamByName('Property_Number').Value := cmbID.Text;
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Parameters.ParamByName('Perimeter').Value := rPerimeter;
+      qryP4A.Parameters.ParamByName('Area').Value := rArea;
+
+
+      qryP4A.ExecSQL;
+      qryP4A.SQL.Clear;
+      qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
+      qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
+      qryP4A.Open;
+
+
+
+    end;
+  end;
+
+end;
+
+procedure TfrmPropertyEdit.EraseArea(Sender: TObject);
+begin
+edtArea.Text := '';
+end;
+
+procedure TfrmPropertyEdit.ErasePerimeter(Sender: TObject);
+begin
+edtPerimeter.Text := '';
 end;
 
 procedure TfrmPropertyEdit.FormClose(Sender: TObject; var Action: TCloseAction);

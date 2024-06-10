@@ -14,7 +14,7 @@ type
     btnReturn: TButton;
     imgProfile: TImage;
     lblUsername: TLabel;
-    lblAccount: TLabel;
+    lblAccountMM: TLabel;
     btnViewProperties: TButton;
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
@@ -74,12 +74,27 @@ begin
 end;
 
 procedure TfrmMainMenu.btnHelpClick(Sender: TObject);
+
+var
+sLine, sString: String;
+
 begin
 
   if NOT FileExists('Help.txt') then
     begin
       Rewrite(tFile, 'Help.txt');
+    end
+    else
+    begin
+      Assignfile(tFile, 'Help.txt');
+      while NOT EOF(tFile) do
+        begin
+          Readln(tFile, sLine);
+          sString := sString + #13#10 + sLine;
+        end;
     end;
+
+   ShowMessage(sString);
 
 
 end;
@@ -195,7 +210,7 @@ begin
      with LoginScreen_u.frmLoginScreen do
     begin
     lblPFP.Caption := User.getInit;
-    lblAccount.Caption := User.getAcc;
+    lblAccountMM.Caption := User.getAcc;
     lblUsername.Caption := User.getUsername;
     end;
 end;
