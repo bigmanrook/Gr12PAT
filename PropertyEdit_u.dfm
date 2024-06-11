@@ -36,7 +36,7 @@ object frmPropertyEdit: TfrmPropertyEdit
   end
   object edtValue: TEdit
     Left = 471
-    Top = 279
+    Top = 281
     Width = 145
     Height = 23
     TabOrder = 2

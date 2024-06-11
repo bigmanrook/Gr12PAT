@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, LoginScreen_u, system.Math, jpeg,
-  Vcl.Imaging.pngimage, User_cls, Property_cls, PropertyView_u, PropertyEdit_u, PropertyNew_u;
+  Vcl.Imaging.pngimage, User_cls, Property_cls, PropertyView_u, PropertyEdit_u, PropertyNew_u, Database_dm;
 
 type
   TfrmMainMenu = class(TForm)
@@ -14,7 +14,7 @@ type
     btnReturn: TButton;
     imgProfile: TImage;
     lblUsername: TLabel;
-    lblAccount: TLabel;
+    lblAccountMM: TLabel;
     btnViewProperties: TButton;
     btnAddProperty: TSpeedButton;
     btnEditProperties: TButton;
@@ -74,6 +74,10 @@ begin
 end;
 
 procedure TfrmMainMenu.btnHelpClick(Sender: TObject);
+
+var
+sLine, sString: String;
+
 begin
 
   if NOT FileExists('Help.txt') then
@@ -83,7 +87,14 @@ begin
     else
     begin
       Assignfile(tFile, 'Help.txt');
+      while NOT EOF(tFile) do
+        begin
+          Readln(tFile, sLine);
+          sString := sString + #13#10 + sLine;
+        end;
     end;
+
+   ShowMessage(sString);
 
 
 end;
@@ -92,6 +103,7 @@ procedure TfrmMainMenu.btnPropertiesClick(Sender: TObject);
 
 var
   iCount : Real;
+  sAccount : String;
 begin
 
 //Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
@@ -106,7 +118,28 @@ Reset(tFile);
   //ShowMessage('iCount established');
 
     I := RandomRange(1, strtoint(floattostr(iCount)));
-    J := RandomRange(1, strtoint(floattostr(iCount)));
+
+
+    with LoginScreen_u.frmLoginScreen, Property_cls.TProperty, Database_dm.DataModule1 do
+    begin
+    iCount := 0;
+    sAccount := User.getAcc();
+    //SHowmessage(sAccount);
+
+    qryP4A.Close;
+    qryP4A.SQL.Clear;
+    qryP4A.SQL.Add('SELECT * FROM Properties as P WHERE P.Owner = ''' + sAccount + '''');
+    qryP4A.ExecSQL;
+    qryP4A.Open;
+
+
+       while not qryP4A.Eof do
+          begin
+            iCount := iCount + 1;
+            qryP4A.Next;
+          end;
+    end;
+
 
     sBathroom := 'Houses Dataset/' + inttostr(I) + '_bathroom.jpg';
      if FileExists(sBathroom) then
@@ -151,7 +184,7 @@ Reset(tFile);
      end
    else
     begin
-       J := RandomRange(1, strtoint(floattostr(iCount)));
+       I := RandomRange(1, strtoint(floattostr(iCount)));
     end;
 
 
@@ -199,7 +232,7 @@ begin
      with LoginScreen_u.frmLoginScreen do
     begin
     lblPFP.Caption := User.getInit;
-    lblAccount.Caption := User.getAcc;
+    lblAccountMM.Caption := User.getAcc;
     lblUsername.Caption := User.getUsername;
     end;
 end;
