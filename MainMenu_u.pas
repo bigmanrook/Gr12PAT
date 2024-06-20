@@ -140,8 +140,8 @@ Reset(tFile);
             qryP4A.Next;
           end;
        SetLength(arrPropNo, iCount);
-
-       for k := Low(arrPropNo) to High(arrPropNo) do
+       qryP4A.First;
+       for k := 1 to High(arrPropNo) do
 
           begin
             arrPropNo[k] := qryP4A['Property_Number'];
