@@ -13,6 +13,7 @@ object frmMainMenu: TfrmMainMenu
   Font.Style = []
   Position = poDesigned
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object imgProfile: TImage
@@ -126,7 +127,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object imgBedroom: TImage
     Left = 400
-    Top = 239
+    Top = 241
     Width = 185
     Height = 145
     Proportional = True
@@ -134,7 +135,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object imgBathroom: TImage
     Left = 168
-    Top = 239
+    Top = 241
     Width = 193
     Height = 145
     Proportional = True
@@ -192,9 +193,9 @@ object frmMainMenu: TfrmMainMenu
     OnClick = btnEditPropertiesClick
   end
   object btnProperties: TButton
-    Left = 304
+    Left = 280
     Top = 25
-    Width = 153
+    Width = 193
     Height = 25
     Caption = 'View available properties'
     TabOrder = 4

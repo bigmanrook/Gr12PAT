@@ -32,6 +32,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnReturnClick(Sender: TObject);
     procedure btnHelpClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,7 +80,7 @@ var
 sLine, sString: String;
 
 begin
-
+  sString := '';
   if NOT FileExists('Help.txt') then
     begin
       Rewrite(tFile, 'Help.txt');
@@ -87,6 +88,7 @@ begin
     else
     begin
       Assignfile(tFile, 'Help.txt');
+      Reset(tFile);
       while NOT EOF(tFile) do
         begin
           Readln(tFile, sLine);
@@ -102,19 +104,21 @@ end;
 procedure TfrmMainMenu.btnPropertiesClick(Sender: TObject);
 
 var
-  iCount, k : Integer;
+  iCount, k, iRandom : Integer;
   sAccount : String;
   arrPropNo : array of integer;
 begin
 
 //Add Form for Profile only, net property value, places renting out, perhaps a list of those renting out to, earnings annually
 //Loop through textfile
-iCount := 0;
+iCount := 535;
 AssignFile(tFile, 'Houses Dataset INFO/HousesInfo.txt');
+
+
+
 Reset(tFile);
 //ShowMessage('File Assigned');
 
- iCount := 535;
 
 
 
@@ -134,6 +138,7 @@ Reset(tFile);
     qryP4A.Open;
 
 
+
        while not qryP4A.Eof do
           begin
             iCount := iCount + 1;
@@ -151,10 +156,10 @@ Reset(tFile);
 
     end;
 
-
     if J = 0 then
      begin
-      J := arrPropNo[RandomRange(1, Length(arrPropNo))];
+      iRandom := RandomRange(1, Length(arrPropNo));
+      J := arrPropNo[iRandom];
      end;
 
 
@@ -163,7 +168,7 @@ Reset(tFile);
     if J <> I  then
     begin
 
-      if btnProperties.Caption = 'View your properties/property'  then
+      if btnProperties.Caption = 'View available properties'  then
       begin
 
            sBathroom := 'Houses Dataset/' + inttostr(J) + '_bathroom.jpg';
@@ -188,40 +193,43 @@ Reset(tFile);
          if FileExists(sFrontal) then
          begin
           imgFrontal.Picture.LoadFromFile(sFrontal);
-          //ShowMessage('images loaded');
+
          end;
 
-       btnProperties.Caption := 'View available properties';
-      end;
+       btnProperties.Caption := 'View your properties/property';
+      end
 
-      if btnProperties.Caption = 'View available properties'  then
+      else if btnProperties.Caption = 'View your properties/property'  then
      begin
-
        sBathroom := 'Houses Dataset/' + inttostr(I) + '_bathroom.jpg';
+       sBedroom := 'Houses Dataset/' + inttostr(I) + '_bedroom.jpg';
+       sKitchen := 'Houses Dataset/' + inttostr(I) + '_kitchen.jpg';
+       sFrontal := 'Houses Dataset/' + inttostr(I) + '_frontal.jpg';
+
        if FileExists(sBathroom) then
        begin
         imgBathroom.Picture.LoadFromFile(sBathroom);
        end;
 
-       sBedroom := 'Houses Dataset/' + inttostr(I) + '_bedroom.jpg';
+
        if FileExists(sBedroom) then
        begin
         imgBedroom.Picture.LoadFromFile(sBedroom);
        end;
 
-       sKitchen := 'Houses Dataset/' + inttostr(I) + '_kitchen.jpg';
+
        if FileExists(sKitchen) then
        begin
        imgKitchen.Picture.LoadFromFile(sKitchen);
        end;
 
-       sFrontal := 'Houses Dataset/' + inttostr(I) + '_frontal.jpg';
+
        if FileExists(sFrontal) then
        begin
         imgFrontal.Picture.LoadFromFile(sFrontal);
        end;
 
-     btnProperties.Caption := 'View your properties/property';
+     btnProperties.Caption := 'View available properties';
      end;
 
      end
@@ -268,6 +276,13 @@ end;
 procedure TfrmMainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Application.Terminate;
+end;
+
+procedure TfrmMainMenu.FormCreate(Sender: TObject);
+begin
+
+  j := 0;
+
 end;
 
 procedure TfrmMainMenu.FormShow(Sender: TObject);

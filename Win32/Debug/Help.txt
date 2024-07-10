@@ -1,0 +1,7 @@
+Click Add Property button to add a new property to database
+
+Click Edit Property to change value, area or perimeter of property
+
+Click View Property to view your Properties
+
+Click View available properties to view properties avaible for purchase
