@@ -52,6 +52,8 @@ begin
     end
     else
     begin
+
+      tblAcc.First;
       while NOT TblAcc.Eof do
         begin
 

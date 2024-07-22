@@ -24,6 +24,7 @@ type
     imgBedroom: TImage;
     imgBathroom: TImage;
     lblPFP: TLabel;
+    lblAccType: TLabel;
     procedure btnPropertiesClick(Sender: TObject);
     procedure btnViewPropertiesClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -292,6 +293,16 @@ begin
     lblPFP.Caption := User.getInit;
     lblAccountMM.Caption := User.getAcc;
     lblUsername.Caption := User.getUsername;
+
+    if User.getAccType = True then
+      begin
+        lblAccType.Caption := 'Admin';
+      end
+      else
+      begin
+        lblAccType.Caption := 'Client';
+        btnAddProperty.Enabled := False;
+      end;
     end;
 end;
 

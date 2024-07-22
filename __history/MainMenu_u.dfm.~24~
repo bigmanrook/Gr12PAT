@@ -13,6 +13,7 @@ object frmMainMenu: TfrmMainMenu
   Font.Style = []
   Position = poDesigned
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object imgProfile: TImage
@@ -93,19 +94,12 @@ object frmMainMenu: TfrmMainMenu
     Height = 15
     Caption = 'Username'
   end
-  object lblAccount: TLabel
+  object lblAccountMM: TLabel
     Left = 8
     Top = 157
     Width = 45
     Height = 15
     Caption = 'Account'
-  end
-  object lblUser: TLabel
-    Left = 8
-    Top = 178
-    Width = 23
-    Height = 15
-    Caption = 'User'
   end
   object btnAddProperty: TSpeedButton
     Left = 8
@@ -133,7 +127,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object imgBedroom: TImage
     Left = 400
-    Top = 239
+    Top = 241
     Width = 185
     Height = 145
     Proportional = True
@@ -141,7 +135,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object imgBathroom: TImage
     Left = 168
-    Top = 239
+    Top = 241
     Width = 193
     Height = 145
     Proportional = True
@@ -162,6 +156,13 @@ object frmMainMenu: TfrmMainMenu
     ParentColor = False
     ParentFont = False
   end
+  object lblAccType: TLabel
+    Left = 8
+    Top = 178
+    Width = 47
+    Height = 15
+    Caption = 'Acc Type'
+  end
   object btnHelp: TButton
     Left = 568
     Top = 392
@@ -169,6 +170,7 @@ object frmMainMenu: TfrmMainMenu
     Height = 42
     Caption = '?'
     TabOrder = 0
+    OnClick = btnHelpClick
   end
   object btnReturn: TButton
     Left = 8
@@ -177,6 +179,7 @@ object frmMainMenu: TfrmMainMenu
     Height = 25
     Caption = 'Return to Login Screen'
     TabOrder = 1
+    OnClick = btnReturnClick
   end
   object btnViewProperties: TButton
     Left = 8
@@ -189,7 +192,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object btnEditProperties: TButton
     Left = 8
-    Top = 247
+    Top = 249
     Width = 89
     Height = 25
     Caption = 'Edit Properties'
@@ -197,9 +200,9 @@ object frmMainMenu: TfrmMainMenu
     OnClick = btnEditPropertiesClick
   end
   object btnProperties: TButton
-    Left = 304
+    Left = 280
     Top = 25
-    Width = 153
+    Width = 193
     Height = 25
     Caption = 'View available properties'
     TabOrder = 4

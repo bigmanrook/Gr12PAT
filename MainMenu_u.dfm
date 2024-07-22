@@ -156,6 +156,13 @@ object frmMainMenu: TfrmMainMenu
     ParentColor = False
     ParentFont = False
   end
+  object lblAccType: TLabel
+    Left = 8
+    Top = 178
+    Width = 47
+    Height = 15
+    Caption = 'Acc Type'
+  end
   object btnHelp: TButton
     Left = 568
     Top = 392
@@ -185,7 +192,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object btnEditProperties: TButton
     Left = 8
-    Top = 247
+    Top = 249
     Width = 89
     Height = 25
     Caption = 'Edit Properties'
