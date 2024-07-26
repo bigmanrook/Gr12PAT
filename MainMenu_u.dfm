@@ -17,7 +17,7 @@ object frmMainMenu: TfrmMainMenu
   OnShow = FormShow
   TextHeight = 15
   object imgProfile: TImage
-    Left = 0
+    Left = -8
     Top = 0
     Width = 105
     Height = 105
@@ -183,7 +183,7 @@ object frmMainMenu: TfrmMainMenu
   end
   object btnViewProperties: TButton
     Left = 8
-    Top = 216
+    Top = 218
     Width = 89
     Height = 25
     Caption = 'View Properties'
