@@ -19,6 +19,7 @@ type
     procedure edtAccountClick(Sender: TObject);
     procedure edtPasswordClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -128,6 +129,12 @@ end;
 procedure TfrmLoginScreen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 Application.Terminate;
+end;
+
+procedure TfrmLoginScreen.FormShow(Sender: TObject);
+begin
+edtAccount.Text := '';
+edtPassword.Text := '';
 end;
 
 end.

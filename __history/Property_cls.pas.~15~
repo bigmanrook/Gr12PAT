@@ -25,7 +25,7 @@ type
 
   public
     { Public declarations }
-   constructor Create( sPropertyOwner, sPropertyLocation  : String; TCompleteDate : TDateTime; sPropertyValue : String;  rPropertyArea, rPropertyPerimeter : Real; bforSale, btoLet : Boolean);
+   constructor Create( iPropertyNo: Integer; sPropertyOwner, sPropertyLocation  : String; TCompleteDate : TDateTime; sPropertyValue : String;  rPropertyArea, rPropertyPerimeter : Real; bforSale, btoLet : Boolean);
    function ToString(): String;
    procedure setPropertyArea(rPropertyArea : Real);
    procedure setPropertyPerimeter(rPropertyPerimeter : Real);
@@ -41,16 +41,14 @@ implementation
 function TProperty.calculateValue(rPropertyArea: Real): String;
 begin
  //Calculate property value per m^2 (Let us say constant R/m^2 = R10000)
-
- Result := floattostr(10000 * rPropertyArea);
-
 end;
 
-constructor TProperty.Create( sPropertyOwner,
+constructor TProperty.Create(iPropertyNo: Integer; sPropertyOwner,
   sPropertyLocation: String; TCompleteDate: TDateTime; sPropertyValue: String;
   rPropertyArea, rPropertyPerimeter: Real; bforSale, btoLet: Boolean);
 begin
 
+    fPropertyNo := iPropertyNo;
     fOwner := sPropertyOwner;
     fCompletionDate := TCompleteDate;
     fPropertyLocation := sPropertyLocation;
@@ -75,9 +73,6 @@ end;
 function TProperty.ToString: String;
 begin
   //Return a summary of properties under each name
-
-  Result := fPropertyLocation + #10 + fPropertyValue
-
 end;
 
 end.

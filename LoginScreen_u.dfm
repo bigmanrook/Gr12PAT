@@ -2,8 +2,8 @@ object frmLoginScreen: TfrmLoginScreen
   Left = 0
   Top = 0
   Caption = 'Login Screen'
-  ClientHeight = 414
-  ClientWidth = 576
+  ClientHeight = 413
+  ClientWidth = 572
   Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,7 @@ object frmLoginScreen: TfrmLoginScreen
   Font.Name = 'Segoe UI'
   Font.Style = []
   OnClose = FormClose
+  OnShow = FormShow
   TextHeight = 15
   object lblAccount: TLabel
     Left = 192
@@ -48,6 +49,7 @@ object frmLoginScreen: TfrmLoginScreen
     Top = 208
     Width = 121
     Height = 23
+    PasswordChar = '*'
     TabOrder = 2
     OnClick = edtPasswordClick
   end

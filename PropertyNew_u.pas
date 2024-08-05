@@ -19,7 +19,6 @@ type
     edtDoC: TLabel;
     edtLocation: TEdit;
     edtPerimeter: TEdit;
-    edtValue: TEdit;
     procedure FormShow(Sender: TObject);
     procedure btnEnterClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -51,23 +50,27 @@ bFor_Sale, bTo_Let : boolean;
 begin
 
 
- if (edtArea.Text = '') OR (edtDoC.Caption = '') OR (edtLocation.Text = '') OR (edtValue.Text = '') OR (edtPerimeter.Text = '') OR (edtValue.Text = '') then
+ if (edtArea.Text = '') OR (edtDoC.Caption = '') OR (edtLocation.Text = '') OR (edtPerimeter.Text = '')  then
   begin
     ShowMessage('Please fill out all empty text fields');
   end
   else
   begin
-   with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+   with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen, Property_cls.TProperty do
     begin
       // SQL insertion
       sOwner := User.getAcc();
       sProperty_Location := edtLocation.Text;
       TDate_of_Completion := DateTimePicker1.DateTime;
-      rProperty_Value := StrtoFloat(edtValue.Text);
       rArea := StrtoFloat(edtArea.Text);
+      rProperty_Value := 0;
       rPerimeter := StrtoFloat(edtPerimeter.Text);
       bFor_Sale := chkbxForSale.Checked;
       bTo_Let := chkbxRent.Checked;
+
+      UserProperty := TProperty.Create(sOwner, sProperty_Location, TDate_Of_Completion, floattostr(rProperty_Value), rArea, rPerimeter, bFor_Sale, bTo_Let);
+
+      rProperty_Value := strtofloat(UserProperty.calculateValue(rArea));
 
       qryP4A.SQL.Clear;
       qryP4A.SQL.Add('INSERT INTO Properties');
@@ -100,17 +103,6 @@ begin
 
 
   end;
-
-
-
-
-// qryP4A.SQL.Add();
-
-//  Object filling
-// with Property_cls.TProperty do
-// begin
-//  UserProperty.Create();
-// end;
 
 
 

@@ -77,7 +77,7 @@ object frmPropertyNew: TfrmPropertyNew
   end
   object edtArea: TEdit
     Left = 8
-    Top = 305
+    Top = 289
     Width = 121
     Height = 23
     TabOrder = 6
@@ -98,13 +98,5 @@ object frmPropertyNew: TfrmPropertyNew
     Height = 23
     TabOrder = 8
     Text = 'Perimeter'
-  end
-  object edtValue: TEdit
-    Left = 8
-    Top = 276
-    Width = 121
-    Height = 23
-    TabOrder = 9
-    Text = 'Value'
   end
 end
