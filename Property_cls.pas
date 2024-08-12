@@ -25,7 +25,7 @@ type
 
   public
     { Public declarations }
-   constructor Create( sPropertyOwner, sPropertyLocation  : String; TCompleteDate : TDateTime; sPropertyValue : String;  rPropertyArea, rPropertyPerimeter : Real; bforSale, btoLet : Boolean);
+   constructor Create(iPropNo : Integer; sPropertyOwner, sPropertyLocation  : String; TCompleteDate : TDateTime; sPropertyValue : String;  rPropertyArea, rPropertyPerimeter : Real; bforSale, btoLet : Boolean);
    function ToString(): String;
    procedure setPropertyArea(rPropertyArea : Real);
    procedure setPropertyPerimeter(rPropertyPerimeter : Real);
@@ -46,11 +46,11 @@ begin
 
 end;
 
-constructor TProperty.Create( sPropertyOwner,
+constructor TProperty.Create(iPropNo : integer; sPropertyOwner,
   sPropertyLocation: String; TCompleteDate: TDateTime; sPropertyValue: String;
   rPropertyArea, rPropertyPerimeter: Real; bforSale, btoLet: Boolean);
 begin
-
+    fPropertyNo := iPropNo;
     fOwner := sPropertyOwner;
     fCompletionDate := TCompleteDate;
     fPropertyLocation := sPropertyLocation;
@@ -65,18 +65,20 @@ end;
 procedure TProperty.setPropertyArea(rPropertyArea: Real);
 begin
   //Whatever area the user decides, area cannot be greater than the square of perimeter/4
+  //Will not add this - rather useless procedure
 end;
 
 procedure TProperty.setPropertyPerimeter(rPropertyPerimeter: Real);
 begin
   //Whatever perimeter the user decides. area cannot be greater than the square of perimeter/4
+    //Will not add this - rather useless procedure
 end;
 
 function TProperty.ToString: String;
 begin
   //Return a summary of properties under each name
 
-  Result := fPropertyLocation + #10 + fPropertyValue
+  Result := 'Location: ' + #10 + fPropertyLocation + #13 + 'Value: ' + fPropertyValue + #13 + 'Date of completion: ' + DateTimetoStr(fCompletionDate);
 
 end;
 

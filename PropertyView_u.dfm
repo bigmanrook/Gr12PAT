@@ -67,4 +67,13 @@ object frmPropertyView: TfrmPropertyView
     TabOrder = 4
     Text = 'Property_Number'
   end
+  object btnSortLocations: TButton
+    Left = 8
+    Top = 311
+    Width = 129
+    Height = 25
+    Caption = 'Sort Locations A-Z '
+    TabOrder = 5
+    OnClick = btnSortLocationsClick
+  end
 end

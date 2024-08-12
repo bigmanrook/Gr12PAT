@@ -46,6 +46,7 @@ sOwner, sProperty_Location  : String;
 TDate_of_Completion : TDateTime;
 rProperty_Value, rArea, rPerimeter : Real;
 bFor_Sale, bTo_Let : boolean;
+iPropNo : Integer;
 
 begin
 
@@ -68,9 +69,6 @@ begin
       bFor_Sale := chkbxForSale.Checked;
       bTo_Let := chkbxRent.Checked;
 
-      UserProperty := TProperty.Create(sOwner, sProperty_Location, TDate_Of_Completion, floattostr(rProperty_Value), rArea, rPerimeter, bFor_Sale, bTo_Let);
-
-      rProperty_Value := strtofloat(UserProperty.calculateValue(rArea));
 
       qryP4A.SQL.Clear;
       qryP4A.SQL.Add('INSERT INTO Properties');
@@ -95,6 +93,13 @@ begin
       qryP4A.SQL.Add('SELECT * FROM Properties WHERE Owner=(:Owner) ');
       qryP4A.Parameters.ParamByName('Owner').Value := sOwner;
       qryP4A.Open;
+
+      iPropNo := tblProperties['Property_Number'];
+      UserProperty := TProperty.Create(iPropNo,sOwner, sProperty_Location, TDate_Of_Completion, floattostr(rProperty_Value), rArea, rPerimeter, bFor_Sale, bTo_Let);
+
+      rProperty_Value := strtofloat(UserProperty.calculateValue(rArea));
+
+
 
 
 
