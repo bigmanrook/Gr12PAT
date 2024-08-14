@@ -38,7 +38,7 @@ object frmPropertyView: TfrmPropertyView
   object btnSummarize: TButton
     Left = 8
     Top = 408
-    Width = 129
+    Width = 75
     Height = 25
     Caption = 'Summarize'
     TabOrder = 2
@@ -75,23 +75,5 @@ object frmPropertyView: TfrmPropertyView
     Caption = 'Sort Locations A-Z '
     TabOrder = 5
     OnClick = btnSortLocationsClick
-  end
-  object btnMax: TButton
-    Left = 8
-    Top = 342
-    Width = 129
-    Height = 25
-    Caption = 'Maximum Value'
-    TabOrder = 6
-    OnClick = btnMaxClick
-  end
-  object btnMin: TButton
-    Left = 8
-    Top = 373
-    Width = 129
-    Height = 25
-    Caption = 'Minimum Value'
-    TabOrder = 7
-    OnClick = btnMinClick
   end
 end
