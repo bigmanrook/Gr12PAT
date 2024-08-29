@@ -45,7 +45,7 @@ object frmPropertyView: TfrmPropertyView
     OnClick = btnSummarizeClick
   end
   object redSummary: TRichEdit
-    Left = 216
+    Left = 256
     Top = 303
     Width = 209
     Height = 130
@@ -60,8 +60,8 @@ object frmPropertyView: TfrmPropertyView
     TabOrder = 3
   end
   object cmbID: TComboBox
-    Left = 475
-    Top = 312
+    Left = 471
+    Top = 303
     Width = 145
     Height = 23
     TabOrder = 4
@@ -93,5 +93,34 @@ object frmPropertyView: TfrmPropertyView
     Caption = 'Minimum Value'
     TabOrder = 7
     OnClick = btnMinClick
+  end
+  object edtRange: TEdit
+    Left = 471
+    Top = 332
+    Width = 145
+    Height = 23
+    TabOrder = 8
+    Text = 'Property value Range'
+    OnChange = RangeSearch
+    OnClick = edtRangeClick
+  end
+  object edtSearch: TEdit
+    Left = 471
+    Top = 361
+    Width = 145
+    Height = 23
+    TabOrder = 9
+    Text = 'Location search '
+    OnChange = edtSearchChange
+    OnClick = edtSearchClick
+  end
+  object btnDisplayUsername: TButton
+    Left = 143
+    Top = 311
+    Width = 107
+    Height = 25
+    Caption = 'Display Username'
+    TabOrder = 10
+    OnClick = btnDisplayUsernameClick
   end
 end

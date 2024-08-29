@@ -19,6 +19,9 @@ type
     btnSortLocations: TButton;
     btnMax: TButton;
     btnMin: TButton;
+    edtRange: TEdit;
+    edtSearch: TEdit;
+    btnDisplayUsername: TButton;
     procedure LoadProperties(Sender: TObject);
     procedure btnReturnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -26,6 +29,11 @@ type
     procedure btnSortLocationsClick(Sender: TObject);
     procedure btnMaxClick(Sender: TObject);
     procedure btnMinClick(Sender: TObject);
+    procedure RangeSearch(Sender: TObject);
+    procedure edtSearchChange(Sender: TObject);
+    procedure btnDisplayUsernameClick(Sender: TObject);
+    procedure edtRangeClick(Sender: TObject);
+    procedure edtSearchClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +50,30 @@ implementation
 uses MainMenu_u;
 
 {$R *.dfm}
+
+procedure TfrmPropertyView.btnDisplayUsernameClick(Sender: TObject);
+begin
+
+    with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+  begin
+
+    sAccount := User.getAcc();
+
+    qryP4A.Close;
+    qryP4A.SQL.Clear;
+    qryP4A.SQL.Add();
+    qryP4A.ExecSQL;
+    qryP4A.Open;
+
+    dbPropertyView.DataSource := SQLDatasource;
+    dbPropertyView.Columns[0].Width := 50;
+    dbPropertyView.Columns[1].Width := 150;
+    dbPropertyView.Columns[2].Width := 100;
+
+
+  end;
+
+end;
 
 procedure TfrmPropertyView.btnMaxClick(Sender: TObject);
 begin
@@ -165,6 +197,47 @@ begin
 
 end;
 
+procedure TfrmPropertyView.edtRangeClick(Sender: TObject);
+begin
+edtRange.Clear;
+end;
+
+procedure TfrmPropertyView.edtSearchChange(Sender: TObject);
+
+var
+sLocation : String;
+
+begin
+
+    with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+  begin
+
+    sAccount := User.getAcc();
+    sLocation := edtSearch.Text;
+
+
+    qryP4A.Close;
+    qryP4A.SQL.Clear;
+    qryP4A.SQL.Add('SELECT Property_Number AS Property_ID , Location FROM Properties as P WHERE P.Owner = ''' + sAccount + '''');
+    //qryP4A.Parameters.ParamByName('Location').Value := sLocation;
+
+    qryP4A.ExecSQL;
+    qryP4A.Open;
+
+    dbPropertyView.DataSource := SQLDatasource;
+    dbPropertyView.Columns[0].Width := 50;
+    dbPropertyView.Columns[1].Width := 150;
+
+  end;
+
+
+end;
+
+procedure TfrmPropertyView.edtSearchClick(Sender: TObject);
+begin
+edtSearch.Clear;
+end;
+
 procedure TfrmPropertyView.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Application.Terminate;
@@ -206,6 +279,36 @@ begin
     dbPropertyView.Columns[7].Width := 50;
 
   end;
+end;
+
+procedure TfrmPropertyView.RangeSearch(Sender: TObject);
+
+var
+iRange : Integer;
+
+begin
+
+  with Database_dm.DataModule1, LoginScreen_u.frmLoginScreen do
+  begin
+
+    sAccount := User.getAcc();
+    iRange := strtoint(edtRange.Text);
+
+
+    qryP4A.Close;
+    qryP4A.SQL.Clear;
+    qryP4A.SQL.Add('SELECT Property_Number AS Property_ID , Property_Value FROM Properties GROUP BY Property_Number, Property_Value HAVING Property_Value<(:Property_Value)');
+    qryP4A.Parameters.ParamByName('Property_Value').Value := iRange;
+
+    qryP4A.ExecSQL;
+    qryP4A.Open;
+
+    dbPropertyView.DataSource := SQLDatasource;
+    dbPropertyView.Columns[0].Width := 50;
+    dbPropertyView.Columns[1].Width := 150;
+
+  end;
+
 end;
 
 end.
